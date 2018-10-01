@@ -1,55 +1,358 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-block title
-  if config.subtitle
-    title= config.title + ' | ' + config.subtitle
-  else
-    title= config.title
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
-block content
-  for post in page.posts.toArray()
-    .post
-      h1.post-title
-        include _partial/helpers.pug
-        a(href=url_for(post.path))
-          +title(post)
-      .post-meta= post.date.format(config.date_format)
-      if theme.disqus
-        a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
-      if theme.changyan
-        a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
-          span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
-          span= ' ' + __('Comment')
-      if post.description
-        .post-content
-          != post.description
-      else if post.excerpt
-        .post-content
-          != post.excerpt
-      else if post.content
-        - var br = 0
-        - for (var i = 0; i < 5; ++i) {
-          - br = post.content.indexOf('\n',br+1)
-          if br<0
-            - break
-          if br >150
-            - break
-        - }
-        if br < 0
-          .post-content
-            != post.content
-        else
-          .post-content
-            != post.content.substring(0, br)
-      p(class='readmore')
-        a(href=url_for(post.path))= __('Readmore')
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-re模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/01/re模块/" class="article-date">
+  <time datetime="2018-10-01T06:45:16.865Z" itemprop="datePublished">2018-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#正则表达式</p>
+<p>###正则表达式的常见使用场景<br>    1：判断某一个字符串是否符合规则 #注册页-判断手机号-身份证<br>    2：将符合规则的内容从一个庞大的字符串体系中提取出来</p>
+<pre><code>#爬虫日志分析
+</code></pre><p>###什么是正则表达式？<br>    1：是一种规则</p>
+<p>##一：正则表达式步骤</p>
+<pre><code>1.用 import re 导入正则表达式模块。
+2.用 re.compile()函数创建一个 regex 对象（记得使用原始字符串）。
+3.向 regex 对象的 search()方法传入想查找的字符串。它返回一个 match 对象
+4.调用 match 对象的 group()方法，返回实际匹配文本的字符串。
+补充：regex 对象的 search()方法查找传入的字符串， 寻找该正则表达式的所有匹配。如果字符串中没有找到该正则表达式模式，search()方法将返回 none。如果找到了该模式，search()方法将返回一个 match 对象。
+</code></pre><p>##二：用正则表达式匹配更多模式</p>
+<p>####2.1：利用括号分组<br>    phonenumregex = re.compile(‘(\d{3})-(\d{3})-(\d{4})’)<br>    mo = phonenumregex.search(‘my number is 444-333-3333’)<br>    print(mo.group(1)) #444<br>    print(mo.group(0)) #444-333-3333<br>    print(mo.group()) #向group传0或者不传值匹配的都是字符串<br>    print(mo.groups())#(‘444’, ‘333’, ‘3333’)</p>
+<p>###2.2：用管道匹配多个分组</p>
+<pre><code>heroregex = re.compile(r&apos;batman|雷文轩&apos;)
+mo = heroregex.search(&apos;雷文轩 and batman&apos;)
+print(mo.group())#雷文轩 匹配一个就退出
 
-  include _partial/paginator.pug
-  if theme.disqus
-    script(id='dsq-count-scr', src='//'+ theme.disqus + '.disqus.com/count.js', async)
-  if theme.changyan
-    script#cy_cmt_num(src='https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan, async)
-  if config.mathjax
-    include _partial/mathjax.pug
-  if config.mathjax2
-    include _partial/mathjax2.pug
+heroregex = re.compile(r&apos;雷(文轩|一鸣|英)&apos;)
+mo = heroregex.search(&apos; 雷文轩， 雷文轩and 雷英&apos;)
+print(mo.group()) #匹配其中一个
+</code></pre><p>###2.3：用问好实现可选匹配</p>
+<p>#####正则表达式中的(文)?部分表明， 模式 wo 是可选的分组。该正则表达式匹配的文本中， 文将出现零次或一次。<br>    batregex = re.compile(r’雷(文)?轩’)<br>    mo = batregex.search(‘my name is 雷轩’)<br>    print(mo.group()) #雷轩</p>
+<p>###2.4：用星号匹配零次或多次</p>
+<p>#####（称为星号）意味着“匹配零次或多次”，即星号之前的分组或者<strong>一个元字符</strong>，可以在文本中出现任意次。它可以完全不存在，或一次又一次地重复。</p>
+<pre><code>batrgex = re.compile(r&apos;bat(wo)*man&apos;)
+mo = batrgex.search(&apos; the adventures of batman&apos;)
+print(mo.group()) #batman
+
+mo1 = batrgex.search(&apos; the adventures of batwoman&apos;)
+print(mo1.group()) #batwoman
+
+mo2 = batrgex.search(&apos; the adventures of batwowowoman&apos;)
+print(mo2.group()) #batwowowoman
+</code></pre><p>###2.5：用加号匹配一次或多次</p>
+<p>#####正则表达式 bat(wo)+man 不会匹配字符串’the adventures of batman’，因为加号要求 wo 至少出现一次。如果需要匹配真正的加号字符， 在加号前面加上倒斜杠实现转义： +。</p>
+<pre><code>#batregex = re.compile(&apos;bat(wo)+man&apos;)
+mo = batregex.search(&apos;the adventures of batwoman&apos;)
+print(mo.group()) #batwoman
+#******
+mo = batregex.search(&apos;the adventures of batman&apos;)#+ 号代表一次或者多次
+print(mo == none) #匹配队里里为空 等于none
+</code></pre><p>###2.5：用花括号匹配特定次数</p>
+<p>#####如果想要一个分组重复特定次数，就在正则表达式中该分组的后面，跟上花括号包围的数字。例如，正则表达式(ha){3}将匹配字符串’hahaha’，但不会匹配’haha’，因为后者只重复了(ha)分组两次。除了一个数字，还可以指定一个范围，即在花括号中写下一个最小值、一个逗号和一个最大值。例如，正则表达式(ha){3,5}将匹配’hahaha’、 ‘hahahaha’和’hahahahaha’。</p>
+<p>#####也可以不写花括号中的第一个或第二个数字， 不限定最小值或最大值。例如，(ha){3,}将匹配 3 次或更多次实例， (ha){,5}将匹配 0 到 5 次实例。花括号让正则表达式更简短。这两个正则表达式匹配同样的模式：<br>    hareget = re.compile(r’(ha){3}’)#匹配hahaha<br>    mo = hareget.search(‘hahaha’) #不会匹配haha<br>    print(mo.group())#hahaha</p>
+<p>###2:6贪心和非贪心匹配</p>
+<pre><code>greedyharegex = re.compile(r&apos;(ha){3,5}&apos;)
+mo = greedyharegex.search(&apos;hahahaha&apos;)
+print(mo.group()) #hahahaha 他会匹配更长的值
+
+nongeedyharegex = re.compile(r&apos;(ha){3,5}?&apos;)
+mo2 = nongeedyharegex.search(&apos;hahahahaha&apos;)
+print(mo2.group())#hahaha 尽量取少的模式
+#贪婪匹配：正则会尽量多的帮我们匹配， 默认贪婪，回溯算法
+#非贪婪匹配：会尽量少的为我们匹配，
+    1：
+</code></pre><p>##三：重要的方法</p>
+<p>###3.1    findall()方法</p>
+<pre><code>phonenumregex = re.compile(r&apos;(\d{3})-(\d{3})-(\d{4})&apos;)
+mo = phonenumregex.findall(&apos;cell: 415-555-9999 work: 212-555-0000&apos;)
+print(mo) #[(&apos;415&apos;, &apos;555&apos;, &apos;9999&apos;), (&apos;212&apos;, &apos;555&apos;, &apos;0000&apos;)]
+#1:返回一个字符串列表，． 如果调用在一个有分组的正则表达式上，
+#2:方法 findall()将返回一个字符串的元组的列表（每个分组对应一个字符串），
+#3：会优先显示分组中的内容 ,(?:) 取消分组优先
+</code></pre><p>###3.2 split()<br>    1.mo = re.split(‘(\w+)’, ‘my name is Dan, My sperk 1 langure’)<br>    2.print(mo)#[‘my name is  leiwenxuan , the man years old ‘, ‘25’, ‘, It is sunny water’]<br>    3.print(mo)#[‘my name is  leiwenxuan , the man years old ‘, ‘, It is sunny water’]</p>
+<pre><code>#() 和没有()的匹配的结果是不一样的
+
+#在匹配部分加上（）之后所切出的结果是不同的，
+#没有（）的没有保留所匹配的项，但是有（）的却能够保留了匹配的项，
+#这个在某些需要保留匹配部分的使用过程是非常重要的。
+</code></pre><p>###3.3 finditer（）<br>    fin = re.finditer(‘\d+’, ‘186lei 987has 123’) #finditer返回一个存放匹配结果的迭代器</p>
+<pre><code>for ret in fin:
+      print(ret) #&lt;_sre.SRE_Match object; span=(14, 17), match=&apos;123&apos;&gt;
+       print(ret.group())  #186
+</code></pre><p>###3.4match<br>    mo = re.match(‘\d+’, ‘jkhjk892028617dsds’)<br>    print(mo.group())# 报错AttributeError<br>    mo = re.match(‘\d+’, ‘892028617rsds’)<br>    print(mo.group()) #892028617</p>
+<pre><code>*#注意事项： match 和search区别  match默认匹配加 ^ *
+</code></pre><p>###3.5sub()方法替换字符串</p>
+<pre><code>1. sub_mo = re.compile(&apos;Agent \w+&apos;)
+2. mo = sub_mo.sub(&apos;leiwenxuan&apos;, &apos;Agent Alice gave the secret documents to Agent Bob.&apos;)
+3. print(mo) #leiwenxuan gave the secret documents to leiwenxuan.
+4. 对象的 sub()方法需要传入两个参数。第一个参数是一个字符串， 用于取代发现的匹配。第二个参数是一个字符串，即正则表达式。
+5. 在没有compile 绑定的情况下： 第一个参数是正则， 第二个是 替换的 ， 第三个是字符串， 还可以有第四个代表替换次数
+6. mo = re.sub(r&apos;name&apos;, &apos;姓名&apos;, &apos;name: Dan, name: lisa&apos;, 1)
+7. print(mo) # 姓名: Dan, name: lisa
+
+1. agentNameRggex = re.compile(r&apos;Agent (\w)\w*&apos;)
+2. mo = agentNameRggex.sub(r&apos;\1****&apos;, &apos;Agent Alice told Agent Carol that AgentEve knew Agent Bob was a double agent.&apos;)
+3. print(mo)
+</code></pre><p>##四：字符分类<br>    4.1 元字符</p>
+<p>匹配内容</p>
+<pre><code>.      匹配除换行符以外的任意字符
+\w     匹配字母或数字或下划线
+\s     匹配任意的空白符
+\d     匹配数字
+\n     匹配一个换行符
+\t     匹配一个制表符
+\b     匹配一个单词的结尾
+^     匹配字符串的开始
+$     匹配字符串的结尾
+\W     匹配非字母或数字或下划线
+\D     匹配非数字
+\S     匹配非空白符
+a|b     匹配字符a或字符b
+()     匹配括号内的表达式，也表示一个组
+[...]     匹配字符组中的字符
+[^...]     匹配除了字符组中字符的所有字符
+
+例如：字符分类[0-5]只匹配数字 0 到 5， 这比输入(0|1|2|3|4|5)要短很多。
+![字符分类](https://i.imgur.com/P2Udbd6.png)
+</code></pre><p>2018/9/10/周一 10:04:49 </p>
+<p>###4.1：插入字符和美元字符</p>
+<pre><code>1. 可以在正则表达式的开始处使用插入符号（^），表明匹配必须发生在被查找文本开始处
+2. 类似地，可以再正则表达式的末尾加上美元符号（$），表示该字符串必须以这个正则表达式的模式结束。可以同时使用^和$，表明整个字符串必须匹配该模式，也就是说，只匹配该字符串的某个子集是不够的。
+</code></pre><p>###4.2不区分大小写的匹配</p>
+<pre><code>1. rebocp = re.compile(r&apos;leiWenXuan&apos;,re.I) 
+2. #忽略大小写  re.IGNORECASE 或者re.I
+3. mo = rebocp.search(&apos;Leiwenxuan livs in chain&apos;)
+4. print(mo.group())
+</code></pre><p>###管理复杂的正则表达式</p>
+<pre><code>1. phoneRegex = re.compile(r&apos;&apos;&apos;
+       \w     #可以加注释
+&apos;&apos;&apos;, re.VERBOSE)
+2.mo = phoneRegex.findall(&apos;erhja&apos;)
+3.print(mo)
+
+flags有很多可选值：
+
+    re.I(IGNORECASE)忽略大小写，括号内是完整的写法
+    re.M(MULTILINE)多行模式，改变^和$的行为
+    re.S(DOTALL)点可以匹配任意字符，包括换行符
+    re.L(LOCALE)做本地化识别的匹配，表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境，不推荐使用
+    re.U(UNICODE) 使用\w \W \s \S \d \D使用取决于unicode定义的字符属性。在python3中默认使用该flag
+    re.X(VERBOSE)冗长模式，该模式下pattern字符串可以是多行的，忽略空白字符，并可以添加注释
+</code></pre><p>flags</p>
+<h3 id="分组命名、分组约束"><a href="#分组命名、分组约束" class="headerlink" title="分组命名、分组约束"></a>分组命名、分组约束</h3><p>####用途 前端<br>    1.pattern = ‘&lt;(?P<tag>.<em>?)&gt;.</em>?&lt;/(?P=tag)&gt;’<br>    2.ret = re.search(pattern, ‘<h2> my name is who‘)<br>    3.’’’匹配&lt;&gt;里面一样才匹配’’’<br>    4.if ret:</h2></tag></p>
+<pre><code>5.     print(ret.group())
+6 pattern = r&apos;&lt;(.*?)&gt;.*?&lt;/\1&gt;&apos;
+7.ret = re.search(pattern, &apos;&lt;h1&gt; my name is who&lt;/h1&gt;&apos;)
+8.&apos;&apos;&apos;匹配前后格式一样的标签&apos;&apos;&apos;
+9.if ret:
+10.    print(ret.group())
+11.    
+#(?:正则表达式) 表示取消优先显示功能
+# (?P&lt;组名&gt;正则表达式) 表示给这个组起一个名字
+#(?P=组名) 表示引用之前组的名字，引用部分匹配到的内容必须和之前那个组中的内容一模一样    **
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/01/re模块/" data-id="cjmq2i64b0001v4uvgnt59exl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/01/hello-world/" class="article-date">
+  <time datetime="2018-10-01T04:42:47.891Z" itemprop="datePublished">2018-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/01/hello-world/" data-id="cjmq2i63x0000v4uvpuh5w63y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/01/re模块/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
