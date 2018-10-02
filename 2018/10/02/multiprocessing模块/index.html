@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。Queue([maxsize])  创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。 底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。  Queue的实例q具有以下方法：  q.get( [ block [ ,timeout ]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leiwenxuan">
+<meta property="og:title" content="multiprocess进程-锁-信号量-事件">
 <meta property="og:url" content="http://yoursite.com/2018/10/02/multiprocessing模块/index.html">
 <meta property="og:site_name" content="Leiwenxuan">
 <meta property="og:description" content="创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。Queue([maxsize])  创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。 底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。  Queue的实例q具有以下方法：  q.get( [ block [ ,timeout ]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-02T12:47:37.746Z">
+<meta property="og:updated_time" content="2018-10-02T12:51:08.603Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:title" content="multiprocess进程-锁-信号量-事件">
 <meta name="twitter:description" content="创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。Queue([maxsize])  创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。 底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。  Queue的实例q具有以下方法：  q.get( [ block [ ,timeout ]">
     
     
@@ -36,7 +36,7 @@
         
     
     <!-- title -->
-    <title>Leiwenxuan</title>
+    <title>multiprocess进程-锁-信号量-事件</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -89,15 +89,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text=multiprocess进程-锁-信号量-事件"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description=multiprocess进程-锁-信号量-事件"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=multiprocess进程-锁-信号量-事件&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=multiprocess进程-锁-信号量-事件&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -114,7 +114,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        multiprocess进程-锁-信号量-事件
     </h1>
 
 
@@ -331,15 +331,15 @@ if __name__ == &apos;__main__&apos;:
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text=multiprocess进程-锁-信号量-事件"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description=multiprocess进程-锁-信号量-事件"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=multiprocess进程-锁-信号量-事件&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title=multiprocess进程-锁-信号量-事件"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=multiprocess进程-锁-信号量-事件&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

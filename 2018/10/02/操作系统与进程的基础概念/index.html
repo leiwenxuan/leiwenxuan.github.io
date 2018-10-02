@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="#操作系统的发展史 ##手工操作 —— 穿孔卡片       ###手工操作的两个特点：    1：用户独占全机， 不会出现因资源一杯其他用户占用而等待的现象， 但是资源利用率低    2：cup等待手工操作。 CPU的利用不充分 ##批处理 —— 磁带存储和批处理系统、 ###批处理系统：加载在计算机上的一个系统软件， 在他的控制下， 计算机能够自动的， 成批地处理有个或者多个用户的作业 ###">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leiwenxuan">
+<meta property="og:title" content="操作系统和进程的基础概念">
 <meta property="og:url" content="http://yoursite.com/2018/10/02/操作系统与进程的基础概念/index.html">
 <meta property="og:site_name" content="Leiwenxuan">
 <meta property="og:description" content="#操作系统的发展史 ##手工操作 —— 穿孔卡片       ###手工操作的两个特点：    1：用户独占全机， 不会出现因资源一杯其他用户占用而等待的现象， 但是资源利用率低    2：cup等待手工操作。 CPU的利用不充分 ##批处理 —— 磁带存储和批处理系统、 ###批处理系统：加载在计算机上的一个系统软件， 在他的控制下， 计算机能够自动的， 成批地处理有个或者多个用户的作业 ###">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/DU9G0m7.png">
-<meta property="og:updated_time" content="2018-09-18T07:48:21.134Z">
+<meta property="og:updated_time" content="2018-10-02T12:52:11.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:title" content="操作系统和进程的基础概念">
 <meta name="twitter:description" content="#操作系统的发展史 ##手工操作 —— 穿孔卡片       ###手工操作的两个特点：    1：用户独占全机， 不会出现因资源一杯其他用户占用而等待的现象， 但是资源利用率低    2：cup等待手工操作。 CPU的利用不充分 ##批处理 —— 磁带存储和批处理系统、 ###批处理系统：加载在计算机上的一个系统软件， 在他的控制下， 计算机能够自动的， 成批地处理有个或者多个用户的作业 ###">
 <meta name="twitter:image" content="https://i.imgur.com/DU9G0m7.png">
     
@@ -38,7 +38,7 @@
         
     
     <!-- title -->
-    <title>Leiwenxuan</title>
+    <title>操作系统和进程的基础概念</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -89,15 +89,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&text=操作系统和进程的基础概念"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&is_video=false&description=操作系统和进程的基础概念"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=操作系统和进程的基础概念&body=Check out this article: http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&name=操作系统和进程的基础概念&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -114,7 +114,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        操作系统和进程的基础概念
     </h1>
 
 
@@ -200,15 +200,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&text=操作系统和进程的基础概念"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&is_video=false&description=操作系统和进程的基础概念"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=操作系统和进程的基础概念&body=Check out this article: http://yoursite.com/2018/10/02/操作系统与进程的基础概念/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&title=操作系统和进程的基础概念"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/操作系统与进程的基础概念/&name=操作系统和进程的基础概念&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
