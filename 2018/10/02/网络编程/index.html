@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="##1：软件开发的架构 ###两件程序之间通讯的应用大致可以分为两种：    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用    第二种：比如百度， 知乎，博客园之类 ####c/s架构    即Client 与 Server， 客户端与服务器的端架构 ####b/s架构    Browser 与 Serverm 浏览器与服务端架构 ##IP地址 1: 网卡 ：身份证 mac地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leiwenxuan">
+<meta property="og:url" content="http://yoursite.com/2018/10/02/网络编程/index.html">
+<meta property="og:site_name" content="Leiwenxuan">
+<meta property="og:description" content="##1：软件开发的架构 ###两件程序之间通讯的应用大致可以分为两种：    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用    第二种：比如百度， 知乎，博客园之类 ####c/s架构    即Client 与 Server， 客户端与服务器的端架构 ####b/s架构    Browser 与 Serverm 浏览器与服务端架构 ##IP地址 1: 网卡 ：身份证 mac地">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-18T01:05:37.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:description" content="##1：软件开发的架构 ###两件程序之间通讯的应用大致可以分为两种：    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用    第二种：比如百度， 知乎，博客园之类 ####c/s架构    即Client 与 Server， 客户端与服务器的端架构 ####b/s架构    Browser 与 Serverm 浏览器与服务端架构 ##IP地址 1: 网卡 ：身份证 mac地">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Leiwenxuan</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/02/线程知识点/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/02/网络/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/网络编程/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/网络编程/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/网络编程/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/网络编程/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/网络编程/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#局域网中两台机器的通信原理"><span class="toc-number">1.</span> <span class="toc-text">局域网中两台机器的通信原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp-面向连接的-可靠的-但是慢"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">tcp 面向连接的 可靠的 但是慢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#udp-无连接的-快-能够发送的信息长度是有限的"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">udp 无连接的 快 能够发送的信息长度是有限的</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leiwenxuan</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-02T04:24:38.864Z" itemprop="datePublished">2018-10-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>##1：软件开发的架构</p>
+<p>###两件程序之间通讯的应用大致可以分为两种：<br>    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用<br>    第二种：比如百度， 知乎，博客园之类</p>
+<p>####c/s架构<br>    即Client 与 Server， 客户端与服务器的端架构</p>
+<p>####b/s架构<br>    Browser 与 Serverm 浏览器与服务端架构</p>
+<p>##IP地址</p>
+<pre><code>1: 网卡 ：身份证 mac地址 计算机在网络上的身份证
+2: 交换机 ：负责一个网络内的多台机器之间的信息交换
+3: mac地址 ：16进制的数  全球唯一
+
+1: 127.0.0.1 ：本地回环地址 本机的地址
+2: 0.0.0.0 ： ip地址的、回环地址的所有的用户都能找到你这台机器
+</code></pre><p>####局域网</p>
+<pre><code># 局域网
+1: 网关ip    不同局域网之间通信依赖的ip地址
+2: 子网掩码  判断两个ip地址是否在同一个网段内
+3：网段
+
+
+# 0.0.0.0 - 255.255.255.255
+# 局域网的概念
+# 外网ip 我们谁都能访问
+# 内网ip 从外部不能访问，只能在内部环境中互相访问
+# 外网ip永远不会和内网ip冲突？
+# 0.0.0.0 - 255.255.255.255中间为内网保留了一些字段
+# 192.168.0.0 - 192.168.255.255
+# 10.0.0.0 - 10.255.255.255
+# 172.16.0.0 - 172.31.255.255
+</code></pre><p>###局域网中两台机器的通信原理</p>
+<h1 id="局域网中两台机器的通信原理"><a href="#局域网中两台机器的通信原理" class="headerlink" title="局域网中两台机器的通信原理"></a>局域网中两台机器的通信原理</h1><pre><code># 交换机
+# ip地址
+# ip地址 -arp协议-&gt; mac地址
+# mac地址 ： 全球唯一
+# arp协议 ： 广播 和 单播
+    # 通过ip地址获取mac地址
+    # 一台机器A发起一个arp请求（只包含ip地址），发送给交换机
+    # 交换机接收到请求，广播这条消息
+    # 所有的机器都会接收到这个请求，只有和要寻找ip地址吻合的机器B
+    # 才会回应交换机的广播，（带着自己的mac地址）
+    # 交换机通过单播的形式将回复的B的mac地址发送给A
+# 判断两台机器是不是在同一个局域网内：
+    # 子网掩码
+    # A机器的ip地址和A的子网掩码 按位与
+    # B机器的ip地址和B的子网掩码 按位与
+    # 得到的结果如果一致 那么说明两台机器是在一个网段内的
+</code></pre><p>####端口</p>
+<pre><code># 端口的概念 —— 帮助你找到一个应用
+# 每一个网络服务都会占用计算机上的一个端口
+# 计算机上的端口范围 0-65535
+# 在同一时刻 同一台计算机上 不同的网络应用 占用的端口一定是不同的
+</code></pre><p>##2：OSI 七层模型</p>
+<p>####在7层的基础上简化为5层</p>
+<pre><code># 应用层 http、https ftp smtp
+# 传输层 TCP、UDP协议  4层路由器， 4层交换机
+        # 端口 ：找到某一台机器上的具体的网络应用
+        # tcp 面向连接 可靠 慢 全双工
+            # 三次握手 建立tcp连接的过程
+            # 发消息
+            # 四次挥手 断开tcp连接的过程
+           # udp 无连接 不可靠 快
+
+# 网络层 ip协议  3层交换机 3层路由器
+# 数据链路层 arp协议 / mac地址 网卡，交换机
+        arp协议：根据ip地址找mac地址 ----交换机（广播， 单播）
+# 物理层
+</code></pre><p>##Tcp 和 Udp</p>
+<h4 id="tcp-面向连接的-可靠的-但是慢"><a href="#tcp-面向连接的-可靠的-但是慢" class="headerlink" title="tcp 面向连接的 可靠的 但是慢"></a>tcp 面向连接的 可靠的 但是慢</h4><pre><code># tcp协议
+# 两个应用之间要想通信 必须先建立连接
+# 然后基于连接来通信
+# 比较重要的文件 邮件的发送 下载安装包
+#比较可靠的长数据
+</code></pre><h4 id="udp-无连接的-快-能够发送的信息长度是有限的"><a href="#udp-无连接的-快-能够发送的信息长度是有限的" class="headerlink" title="udp 无连接的 快 能够发送的信息长度是有限的"></a>udp 无连接的 快 能够发送的信息长度是有限的</h4><pre><code># 快 但 不可靠 不能发送过长的数据
+# 即时通讯类的程序
+#高并发的短消息
+</code></pre><p>###tcp和udp 的区别<br>     tcp、udp是通过网络通信的两种方式<br>       tcp 先建立连接再通信</p>
+<pre><code>    # 可靠
+    # 慢， 流式传输
+udp 不需要建立连接直接通信
+    # 快
+    # 不可靠
+</code></pre><p>###<strong>TCP协议中的数据传递</strong></p>
+<p>###tcp协议的拆包机制</p>
+<pre><code>当发送端缓冲区的长度大于网卡的MTU时，tcp会将这次发送的数据拆成几个数据包发送出去。 
+MTU是Maximum Transmission Unit的缩写。意思是网络上传送的最大数据包。MTU的单位是字节。 
+大部分网络设备的MTU都是1500。如果本机的MTU比网关的MTU大，大的数据包就会被拆开来传送，这样会产生很多数据包碎片，增加丢包率，降低网络速度。
+</code></pre><p>###面向流的通信特点和Nagle算法</p>
+<pre><code>TCP（transport control protocol，传输控制协议）是面向连接的，面向流的，提供高可靠性服务。
+收发两端（客户端和服务器端）都要有一一成对的socket，因此，发送端为了将多个发往接收端的包，
+更有效的发到对方，使用了优化方法（Nagle算法），将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
+这样，接收端，就难于分辨出来了，必须提供科学的拆包机制。 即面向流的通信是无消息保护边界的。 
+对于空消息：tcp是基于数据流的，于是收发的消息不能为空，这就需要在客户端和服务端都添加空消息的处理机制，
+防止程序卡住，而udp是基于数据报的，即便是你输入的是空内容（直接回车），也可以被发送，udp协议会帮你封装上消息头发送过去。 
+可靠黏包的tcp协议：tcp的协议数据不会丢，没有收完包，下次接收，会继续上次继续接收，己端总是在收到ack时才会清除缓冲区内容。数据是可靠的，但是会粘包。
+</code></pre><p>###一个简单的tcp： server 和 client</p>
+<p>####sever<br>    from socket import *<br>    ip_port = (‘127.0.0.1’, 9514)</p>
+<pre><code>sk = socket(AF_INET, SOCK_STREAM)
+sk.bind(ip_port)
+sk.listen()
+sk_cl, addr = sk.accept()
+data1 = sk_cl.recv(10)
+data2 = sk_cl.recv(10)
+
+print(&apos;-----&gt;&apos;, data1.decode(&apos;utf-8&apos;))
+print(&apos;-----&gt;&apos;, data2.decode(&apos;utf-8&apos;))
+
+sk_cl.close()
+</code></pre><p>####client<br>    from socket import *<br>    ip_port = (‘127.0.0.1’, 9514)</p>
+<pre><code>sk = socket(AF_INET, SOCK_STREAM)
+sk.connect(ip_port)
+
+sk.send(b&apos;my name is leiwenxuan&apos;)
+sk.send(b&apos;nsdfasfdsf&apos;)
+</code></pre><p>####udp的简单程序</p>
+<p>###sever<br>    import socket<br>    sk = socket.socket(type=socket.SOCK_DGRAM)</p>
+<pre><code>sk.bind((&apos;127.0.0.1&apos;, 9000))
+while 1:
+    msg,addr = sk.recvfrom(1024)
+    print(msg.decode(&apos;utf-8&apos;), addr)
+    # sk.sendto(&apos;正在发送...&apos;.encode(&apos;utf-8&apos;), addr)
+    inp = input(&apos;input :&apos;)
+</code></pre><p>###client<br>    import socket</p>
+<pre><code>sk = socket.socket(type=socket.SOCK_DGRAM)
+sk.bind((&apos;127.0.0.1&apos;, 9001))
+
+while 1:
+    # sk.sendto(&apos;正在发送...&apos;.encode(&apos;utf-8&apos;), (&apos;127.0.0.1&apos;, 9000))
+    inp = input(&apos;input:&apos;)
+    sk.sendto(inp.encode(&apos;utf-8&apos;),(&apos;127.0.0.1&apos;, 9000) )
+    msg, addr = sk.recvfrom(1024)
+    print(msg.decode(&apos;utf-8&apos;), addr[1])
+</code></pre><p>##一个重要的黏包处理</p>
+<p>###server<br>    import json, struct<br>    ‘’’传输一个简单的文件’’’<br>    import os<br>    from socket import *<br>    path_name = r’G:\python笔记\Pythonjing\day31\video\1.内容回顾和作业讲解.mp4’<br>    path_name = os.path.realpath(path_name)<br>    size = str(os.path.getsize(path_name))</p>
+<pre><code>ip_port = (&apos;127.0.0.1&apos;, 9514)
+sk = socket(AF_INET, SOCK_STREAM)
+sk.bind(ip_port)
+sk.listen()
+sk_cl, addr = sk.accept()
+
+sk_cl.send(size.encode(&apos;utf-8&apos;))
+with open(path_name, &apos;rb&apos;) as f:
+    while 1:
+        data = f.read(2048)
+        pack_num = struct.pack(&apos;i&apos;, len(data))
+        sk_cl.send(pack_num)
+        sk_cl.send(data)
+        if not data:
+            pack_num = struct.pack(&apos;i&apos;, len(&apos;&apos;))
+            sk_cl.send(pack_num)
+            print(len(data))
+            break
+</code></pre><p>##client<br>    from socket import *<br>    import struct<br>    import sys</p>
+<pre><code>def processBar(num, total):
+    &apos;&apos;&apos;进度条&apos;&apos;&apos;
+    rate = num / total
+    rate_num = int(rate * 100)
+    if rate_num == 100:
+        r = &apos;\r%s&gt;%d%%\n&apos; % (&apos;|&apos; * rate_num, rate_num,)
+    else:
+        r = &apos;\r%s&gt;%d%%&apos; % (&apos;|&apos; * rate_num, rate_num,)
+    sys.stdout.write(r)
+    sys.stdout.flush
+
+
+ip_port = (&apos;127.0.0.1&apos;, 9514)
+sk = socket(AF_INET, SOCK_STREAM)
+sk.connect(ip_port)
+
+
+size = int(sk.recv(1024).decode(&apos;utf-8&apos;))
+# processBar(2048, size)
+num_size = 0
+with open(&apos;lw.mp4&apos;,&apos;wb&apos;) as f:
+    while 1:
+        pack_num = sk.recv(4)
+        num = struct.unpack(&apos;i&apos;, pack_num)[0]
+        # print(num)
+        if not num:
+            break
+        ret = sk.recv(num)
+        f.write(ret)
+        num_size += num
+        processBar(num_size, size)
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#局域网中两台机器的通信原理"><span class="toc-number">1.</span> <span class="toc-text">局域网中两台机器的通信原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp-面向连接的-可靠的-但是慢"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">tcp 面向连接的 可靠的 但是慢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#udp-无连接的-快-能够发送的信息长度是有限的"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">udp 无连接的 快 能够发送的信息长度是有限的</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/网络编程/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/网络编程/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/网络编程/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/网络编程/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/网络编程/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/网络编程/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

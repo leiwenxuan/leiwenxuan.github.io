@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="协程，线程池标签（空格分隔）：线程池/协程 #线程池 ###concurrent.futures模块提供了一个用于异步执行callables的高级接口。 ##concurrent.futures.ThreadPoolExecutor ###submit（fn，* args，** kwargs ）将可调用的fn调度为执行， 并返回表示可调用执行的对象 from concurrent.futures">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leiwenxuan">
+<meta property="og:url" content="http://yoursite.com/2018/10/02/协程，线程池/index.html">
+<meta property="og:site_name" content="Leiwenxuan">
+<meta property="og:description" content="协程，线程池标签（空格分隔）：线程池/协程 #线程池 ###concurrent.futures模块提供了一个用于异步执行callables的高级接口。 ##concurrent.futures.ThreadPoolExecutor ###submit（fn，* args，** kwargs ）将可调用的fn调度为执行， 并返回表示可调用执行的对象 from concurrent.futures">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-26T08:55:13.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:description" content="协程，线程池标签（空格分隔）：线程池/协程 #线程池 ###concurrent.futures模块提供了一个用于异步执行callables的高级接口。 ##concurrent.futures.ThreadPoolExecutor ###submit（fn，* args，** kwargs ）将可调用的fn调度为执行， 并返回表示可调用执行的对象 from concurrent.futures">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Leiwenxuan</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/02/异常处理/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/02/线程知识点/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/协程，线程池/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/协程，线程池/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/协程，线程池/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/协程，线程池/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/协程，线程池/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#协程，线程池"><span class="toc-number">1.</span> <span class="toc-text">协程，线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">1.0.1.</span> <span class="toc-text">示例代码</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leiwenxuan</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-02T04:24:38.924Z" itemprop="datePublished">2018-10-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="协程，线程池"><a href="#协程，线程池" class="headerlink" title="协程，线程池"></a>协程，线程池</h1><p>标签（空格分隔）：线程池/协程</p>
+<p>#线程池</p>
+<p>###concurrent.futures模块提供了一个用于异步执行callables的高级接口。</p>
+<p>##<strong>concurrent.futures.ThreadPoolExecutor</strong></p>
+<p>###submit（fn，* args，** kwargs ）<br>将可调用的fn调度为执行， 并返回表示可调用执行的对象</p>
+<pre><code>from concurrent.futures import ThreadPoolExecutor
+def fun(i):
+    print(&apos;my name is %s&apos;%i)
+t = ThreadPoolExecutor(5)
+for i in range(10):
+    ret = t.submit(fun, i)
+    #返回一个可执行的对象 &lt;Future at 0x7f2da90c3e10 state=pending&gt;
+</code></pre><p>###<strong>shutdown(wait=True) </strong><br>相当于进程池的pool.close()+pool.join()操作<br>wait=True，等待池内所有任务执行完毕回收完资源后才继续<br>wait=False，立即返回，并不会等待池内的任务执行完毕<br>但不管wait参数为何值，整个程序都会等到所有任务执行完毕<br>submit和map必须在shutdown之前</p>
+<p>####具体代码</p>
+<pre><code>def fun(i):
+print(&apos;my name is %s&apos;%i)
+return i*2
+t = ThreadPoolExecutor(5)
+for i in range(10):
+    ret = t.submit(fun, i)
+    print(ret.result()) #查看返回的结果
+t.shutdown() #表示线程都执行完毕
+print(&apos;主进程结束&apos;)
+</code></pre><p>###map  取代for循环submit的操作</p>
+<pre><code>from concurrent.futures import ThreadPoolExecutor
+def fun(i):
+    print(&apos;my name is %s&apos;%i)
+    return i*2
+t = ThreadPoolExecutor(5)
+res = map(fun, range(20))
+for i in res:print(i)
+</code></pre><p>##ProcessPoolExecutor<br>它是Executor使用的过程池异步执行调用子类。 ProcessPoolExecutor使用该multiprocessing模块，它允许它侧向全局解释器锁定，但也意味着只能执行和返回可选对象。<br>该<strong>main</strong>模块必须可由工作程序子进程导入。这意味着ProcessPoolExecutor在交互式解释器中不起作用。</p>
+<p>###简单的回调函数</p>
+<pre><code>from concurrent.futures import ProcessPoolExecutor
+def fun(i):
+    print(i)
+    return i*2
+def call_back(arg):
+    print(&apos;call back:&apos;, arg.result())
+if __name__ == &apos;__main__&apos;:
+    p = ProcessPoolExecutor()
+    for i in range(20):
+        p.submit(fun, i).add_done_callback(call_back)
+    print(&apos;主线程&apos;)
+</code></pre><p>##××××××××××××××××××××××××××××××××××××××</p>
+<p>##<strong>协程</strong></p>
+<p>###协程的优势：<br>    线程： 计算机中能被cpu执行的最小单位<br>        一条线程在多个任务之间来回切换，切换这个动作是浪费时间的<br>        对与cpu， 操作系统来说协程是不存在的# 一个任务不得不陷入阻塞， 在这个任务的过程中切换到另一个任务继续执行<br>    你的程序的只要还需要执行， 你的当前线程永远不会阻塞<br>    同时做几件事件，在做一件事件的时候还可以做其他的事件，比如做饭的时候，煮粥的时候可以切菜，炒菜，干一些其他事件，等待煮粥事件<br>    合理的利用时间， 不要等待一个事件， 比如程序的时候，在阻塞的时候干一些其他啊的事件</p>
+<p>###协程模块：<br>    利用协程来进行多个任务陷入阻塞的时候进行切换来保证在处理多个任务的时候总是忙<br>    无论是进程还是线程都是有操作系统来切换的，开启的线程，进程会给操作系统的调动带来压力<br>    如果我们使用的是协程，协程在程序之间的切换操作系统感知不到，无论开启多个协程对操作系统的调用不会带来压力</p>
+<p> spawn(函数名) 产生了一个协程任物在遇到IO操作的时候帮助我们在多任务之&gt; 间自动切换<br>    join()        阻塞 直到某个任务被执行完毕<br>    join_all()<br>    value属性      获取返回值</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre><code>from gevent import monkey
+monkey.patch_all() #d
+import threading
+import time
+import gevent
+def fun1():
+    print(&apos;1111&apos;)
+    gevent.sleep(1)
+    print(&apos;2222&apos;)
+    g1_id = threading.current_thread().getName()
+    print(g1_id)
+def fun2():
+    print(&apos;3333&apos;)
+    gevent.sleep(1)
+    print(&apos;44444&apos;)
+    #查看进程ID
+    g2_id = threading.current_thread().getName()
+    print(g2_id) #假的线程
+g1 = gevent.spawn(fun1)#遇到阻塞就回切换
+g2 = gevent.spawn(fun2)
+gevent.joinall([g1, g2]) #等待子线程结束
+</code></pre><p>###<strong>爬虫示例代码</strong></p>
+<p>###具体的示例</p>
+<pre><code>from gevent import monkey
+monkey.patch_all()
+import time
+import gevent
+import requests
+usl_list = [
+        &apos;http://www.baidu.com&apos;,
+        &apos;http://www.4399.com&apos;,
+        &apos;http://www.7k7k.com&apos;,
+        &apos;http://www.sogou.com&apos;,
+        &apos;http://www.sohu.com&apos;,
+        &apos;http://www.sina.com&apos;,
+        &apos;http://www.jd.com&apos;,
+        &apos;https://www.luffycity.com/home&apos;,
+        &apos;https://www.douban.com&apos;,
+        &apos;http://www.cnblogs.com/Eva-J/articles/8324673.html&apos;,
+        &apos;http://www.baidu.com&apos;,
+        &apos;http://www.7k7k.com&apos;,
+        &apos;http://www.sogou.com&apos;,
+        &apos;http://www.sohu.com&apos;,
+        &apos;https://www.luffycity.com/home&apos;,
+    ]
+def get_url(url):
+    response = requests.get(url)
+    if response.status_code == 200: #查看验证网页是否通
+        print(url, len(response.text)) #response.text网页的信息
+        pass
+start = time.time()
+for url in usl_list:
+    get_url(url)
+print(time.time() - start) #7.55
+start = time.time()
+g_lis = []
+for url in usl_list:
+    g = gevent.spawn(get_url, url)
+    #响应网页有延迟， 在延迟期间切换其他任务执行
+    g_lis.append(g)
+gevent.joinall(g_lis)
+print(time.time() - start) # 1.7
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#协程，线程池"><span class="toc-number">1.</span> <span class="toc-text">协程，线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">1.0.1.</span> <span class="toc-text">示例代码</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/协程，线程池/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/协程，线程池/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/协程，线程池/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/协程，线程池/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/协程，线程池/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/协程，线程池/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

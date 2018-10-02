@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="##创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。    Queue([maxsize])    创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。    底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。    Queue的实例q具有以下方法： q.get( [ block">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leiwenxuan">
+<meta property="og:url" content="http://yoursite.com/2018/10/02/multiprocessing模块/index.html">
+<meta property="og:site_name" content="Leiwenxuan">
+<meta property="og:description" content="##创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。    Queue([maxsize])    创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。    底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。    Queue的实例q具有以下方法： q.get( [ block">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-20T12:14:52.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:description" content="##创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。    Queue([maxsize])    创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。    底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。    Queue的实例q具有以下方法： q.get( [ block">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Leiwenxuan</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/02/multiprocess进程-锁-信号量-事件/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/02/异常处理/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leiwenxuan</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-02T04:24:38.971Z" itemprop="datePublished">2018-10-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>##创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。<br>    Queue([maxsize])<br>    创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。<br>    底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。<br>    Queue的实例q具有以下方法：</p>
+<pre><code>q.get( [ block [ ,timeout ] ] ) 
+返回q中的一个项目。如果q为空，此方法将阻塞，直到队列中有项目可用为止。block用于控
+制阻塞行为，默认为True. 如果设置为False，将引发Queue.Empty异常（定义在Queue模块
+中）。timeout是可选超时时间，用在阻塞模式中。如果在制定的时间间隔内没有项目变为可
+用，将引发Queue.Empty异常。
+
+q.get_nowait( ) 
+同q.get(False)方法。
+
+q.put(item [, block [,timeout ] ] ) 
+将item放入队列。如果队列已满，此方法将阻塞至有空间可用为止。block控制阻塞行为，默
+认为True。如果设置为False，将引发Queue.Empty异常（定义在Queue库模块中）。timeout
+指定在阻塞模式中等待可用空间的时间长短。超时后将引发Queue.Full异常。
+
+q.qsize() 
+返回队列中目前项目的正确数量。此函数的结果并不可靠，因为在返回结果和在稍后程序中使
+用结果之间，队列中可能添加或删除了项目。在某些系统上，此方法可能引发NotImplementedError异常。
+
+
+q.empty() 
+如果调用此方法时 q为空，返回True。如果其他进程或线程正在往队列中添加项目，结果不
+可靠的。也就是说，在返回和使用结果之间，队列中可能已经加入新的项目。
+
+q.full() 
+如果q已满，返回为True. 由于线程的存在，结果也可能是不可靠的（参考q.empty（）方法）。。
+
+方法介绍
+</code></pre><p>###代码示例<br>    from multiprocessing import Process, Queue<br>    import time<br>    def fun(q):<br>        print(‘my name is li’)<br>        q.put([‘lei’, 1, 2, 3, 4])</p>
+<pre><code>if __name__ == &apos;__main__&apos;:
+    q = Queue()
+    p = Process(target=fun, args=(q,))
+    p.start()
+    time.sleep(1)
+    print(q.get())
+</code></pre><p>##队里问题， 消费者生产模型<br>    from multiprocessing import Process, Queue<br>    import time</p>
+<pre><code>def producer(q, name, food):
+    for i in range(10):
+        time.sleep(0.0005)
+        print(&apos;%s生产了%s%s&apos; % (name, food,i))
+        q.put(food + str(i))
+
+def consume(q, name):
+    while 1:
+        food = q.get()
+        if food is None:break
+        print(&apos;%s吃了%s&apos;%(name, food))
+
+if __name__ == &apos;__main__&apos;:
+    q = Queue()
+    p1 = Process(target=producer, args=(q,&apos;li&apos;,&apos;包子&apos;))
+    p1.start()
+
+    p2 = Process(target=consume, args=(q,&apos;alex&apos;))
+    p2.daemon = True
+    p2.start()
+    p1.join() #等p1的原因是先让生产完，防止生产来不及队列里面为空
+    q.put(None)
+</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>##JoinableQueue 类</p>
+<p>###put</p>
+<p>###get</p>
+<p>###task_done 通知队列已经有一个数据被处理了</p>
+<p>###q.join() # 阻塞直到放入队列中所有的数据都被处理掉(有多少个数据就接收到了多少taskdone)</p>
+<pre><code>import time
+import random
+from multiprocessing import Process,JoinableQueue
+
+def consumer(q,name):
+    #处理数据
+    while 1:
+        food = q.get()
+        time.sleep(random.uniform(0, 1))
+        print(&apos;%s吃了%s&apos;%(name, food))
+        q.task_done()
+
+def producer(q, name, food):
+    for i in range(10):
+        time.sleep(random.uniform(0,1))
+        print(&quot;%s生产了%s%s&quot;%(name, food, i))
+        q.put(food + str(i))
+
+if __name__ == &apos;__main__&apos;:
+    q = JoinableQueue()
+    c1 = Process(target=consumer, args=(q, &apos;lei&apos;))
+    c1.daemon = True #创建了一个守护进程
+    c1.start()
+
+    p1 = Process(target=producer, args=(q, &apos;wuyan&apos;, &apos;煎饼&apos;))
+    p1.start()
+    p1.join() #等待生产完毕， 保证了队列里面有全部的数据
+    q.join() #每次取出数据调用 q.task_done() 当为数据取玩阻塞消失
+</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>##pipe的端口管理不会随着某一个进程的关闭就关闭</p>
+<p>###操作系统来管理进程对这些端口的使用</p>
+<p>###left,right</p>
+<p>###left,right</p>
+<p>###操作系统管理4个端口  每关闭一个端口计数-1，直到所有的端口都关闭了，</p>
+<p>###剩余1个端口的时候 recv就会报错<br>    from multiprocessing import Pipe, Process</p>
+<pre><code>def pipeline(left, right):
+    ret = right.recv() #右边接受
+    print(&apos;%s&apos;%(ret))
+
+if __name__ == &apos;__main__&apos;:
+    left, right = Pipe()
+    p = Process(target=pipeline, args=(left, right))
+    left.send(&apos;你好，保重&apos;) #左边发送
+    p.start()
+
+def pipeline(left, right):
+    left.close()
+    while 1:
+        try:
+            print(right.recv())
+        except EOFError:
+            break
+if __name__ == &apos;__main__&apos;:
+    left, right = Pipe()
+    p = Process(target=pipeline, args=(left, right))
+    p.start()
+    right.close()
+    for i in range(10):
+        left.send(i)
+    left.close()
+</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>###为什么要有进程池？<br>    开启过多的进程并不能提高你的效率，反而会降低效率</p>
+<p>###计算密集型  充分占用CPU 多进程可以充分利用多核<br>    适合开启多进程，但是不适合开启很多多进程</p>
+<p>###IO密集型    大部分时间都在阻塞队列，而不是在运行状态中<br>    根本不太适合开启多进程<br><strong>实例化 传参数 进程的个数 cpu/cpu+1<br>提交任务<br>同步提交 apply<br>    返回值 ： 子进程对应函数的返回值<br>    一个一个顺序执行的，并没有任何并发效果<br>异步提交 apply_async<br>    没有返回值，要想所有任务能够顺利的执行完毕<br>        p.close()<br>        p.join() # 必须先close再join，阻塞直到进程池中的所有任务都执行完毕<br>    有返回值的情况下<br>        res.get() # get不能再提交任务之后立刻执行，应该是先提交所有的任务再通过get获取结果<br>    map()方法<br>        异步提交的简化版本<br>        自带close和join方法</strong></p>
+<pre><code>from multiprocessing import Pool
+import time
+def fun(i):
+    print(i)
+if __name__ == &apos;__main__&apos;:
+    p = Pool(5)
+    start = time.clock()
+    for i in range(10000):
+        # p.apply_async(func=fun, args=(i,)) #异步提交 1.3874192285529539(时间)
+        p.apply(fun, args=(i,)) #通同步提交2.2022746500453803(时间)
+    p.close() # 关闭进程池，用户不能再向这个池中提交任务了
+    p.join() # 阻塞，直到进程池中所有的任务都被执行完
+    end = time.clock()
+    print(end - start)
+</code></pre><p>#<strong>*</strong><br>    from multiprocessing import Pool<br>    import time<br>    def fun(i):<br>        print(i)<br>        return i*2<br>    if <strong>name</strong> == ‘<strong>main</strong>‘:<br>        p = Pool(5)<br>        start = time.clock()<br>        p_lis = []<br>        for i in range(10000):<br>            ret = p.apply_async(func=fun, args=(i,)) #异步提交 1.3874192285529539(时间)<br>            p_lis.append(ret)</p>
+<pre><code>     # p.apply(fun, args=(i,)) #通同步提交2.2022746500453803(时间)
+p.close() # 关闭进程池，用户不能再向这个池中提交任务了
+p.join() # 阻塞，直到进程池中所有的任务都被执行完
+for ret in p_lis:
+    print(ret.get()) #取出进程里面的返回值
+end = time.clock()
+print(end - start)
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/multiprocessing模块/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/multiprocessing模块/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/multiprocessing模块/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/multiprocessing模块/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/multiprocessing模块/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

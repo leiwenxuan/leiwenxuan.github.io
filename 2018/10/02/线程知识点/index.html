@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="#线程知识点 ##1线程锁 ###1.1GIL ###1.2线程之间的数据安全问题    例如：多个线程对同一块数据进行操作；            比如赋值运算， 一个线程那到数据还没有返回数据结果时间片轮转，引起数据的不安全；        pop, append 操作是安全的，        队列也是安全的 ####具体操作    此处输入代码     from threading impo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leiwenxuan">
+<meta property="og:url" content="http://yoursite.com/2018/10/02/线程知识点/index.html">
+<meta property="og:site_name" content="Leiwenxuan">
+<meta property="og:description" content="#线程知识点 ##1线程锁 ###1.1GIL ###1.2线程之间的数据安全问题    例如：多个线程对同一块数据进行操作；            比如赋值运算， 一个线程那到数据还没有返回数据结果时间片轮转，引起数据的不安全；        pop, append 操作是安全的，        队列也是安全的 ####具体操作    此处输入代码     from threading impo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-25T11:46:44.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:description" content="#线程知识点 ##1线程锁 ###1.1GIL ###1.2线程之间的数据安全问题    例如：多个线程对同一块数据进行操作；            比如赋值运算， 一个线程那到数据还没有返回数据结果时间片轮转，引起数据的不安全；        pop, append 操作是安全的，        队列也是安全的 ####具体操作    此处输入代码     from threading impo">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Leiwenxuan</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/02/协程，线程池/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/02/网络编程/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/线程知识点/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/线程知识点/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/线程知识点/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/线程知识点/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/线程知识点/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#递归锁可以解决互斥锁的死锁问题"><span class="toc-number">1.</span> <span class="toc-text">递归锁可以解决互斥锁的死锁问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#递归锁能够快速的解决死锁问题"><span class="toc-number">1.1.</span> <span class="toc-text">递归锁能够快速的解决死锁问题</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leiwenxuan</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-02T04:24:38.895Z" itemprop="datePublished">2018-10-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>#线程知识点</p>
+<p>##1线程锁</p>
+<p>###1.1GIL</p>
+<p>###1.2线程之间的数据安全问题<br>    例如：多个线程对同一块数据进行操作；<br>            比如赋值运算， 一个线程那到数据还没有返回数据结果时间片轮转，引起数据的不安全；<br>        pop, append 操作是安全的，<br>        队列也是安全的</p>
+<p>####具体操作<br>    <code>此处输入代码
+    from threading import Thread, Lock</code><br>    lock.acquire()<br>    ‘’’<br>        对数据的操作<br>    ‘’’<br>    lock.release()</p>
+<p>###1.3递归锁和死锁现象</p>
+<p>####死锁<br>     是指两个或两个以上的进程或线程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程，如下就是死锁</p>
+<p>#####死锁现象<br>        两把锁<br>        异步的<br>        操作的时候 抢到一把锁之后还要再去抢第二把锁<br>        一个线程抢到一把锁<br>        另一个线程抢到了另一把锁</p>
+<p>####解决办法<br>    解决方法，递归锁，在Python中为了支持在同一线程中多次请求同一资源，python提供了可重入锁RLock。这个RLock内部维护着一个Lock和一个counter变量，counter记录了acquire的次数，从而使得资源可以被多次require。直到一个线程所有的acquire都被release，其他的线程才能获得资源。上面的例子如果使用RLock代替Lock，则不会发生死锁：</p>
+<p>####示例代码<br>    import time<br>    def fun(lock):<br>        lock.acquire()<br>        print(‘我还活着’)<br>        lock.release()<br>        time.sleep(1)<br>        lock.acquire()<br>        print(‘你还没死’)<br>        lock.release()<br>    def func(lock):<br>        lock.acquire()<br>        lock.acquire()<br>        print(‘没死’)<br>        lock.release()<br>        lock.release()                           </p>
+<pre><code>if __name__ == &apos;__main__&apos;:                   
+    lock = Lock()                            
+    # for i in range(10):                    
+    t1 = Thread(target=fun, args=(lock,))    
+    t1.start()                               
+    t2 = Thread(target=func, args=(lock,))   
+    t2.start()      
+</code></pre><p>###递归锁<br>    在Python中为了支持在同一线程中多次请求同一资源，python提供了可重入锁RLock。这个RLock内部维护着一个Lock和一个counter变量，counter记录了acquire的次数，从而使得资源可以被多次require。直到一个线程所有的acquire都被release，其他的线程才能获得资源。上面的例子如果使用RLock代替Lock，则不会发生生死锁</p>
+<p>####具体代码<br>    from threading import Thread, RLock<br>    fork_lock = noodle_lock = RLock()# 一把锁<br>    def fun1(*args):<br>        noodle_lock.acquire()                   </p>
+<pre><code>#具体操作                                   
+fork_lock.acquire()                     
+# 具体操作                                  
+fork_lock.release()                     
+noodle_lock.release()  #只有当锁释放后才能执行其他操作
+</code></pre><h3 id="递归锁可以解决互斥锁的死锁问题"><a href="#递归锁可以解决互斥锁的死锁问题" class="headerlink" title="递归锁可以解决互斥锁的死锁问题"></a>递归锁可以解决互斥锁的死锁问题</h3><pre><code># 互斥锁
+ ¦   # 两把锁
+ ¦   # 多个线程抢
+ # 递归锁
+ ¦   # 一把锁
+ ¦   # 多个线程抢
+</code></pre><h4 id="递归锁能够快速的解决死锁问题"><a href="#递归锁能够快速的解决死锁问题" class="headerlink" title="递归锁能够快速的解决死锁问题"></a>递归锁能够快速的解决死锁问题</h4><pre><code>  # 递归锁好不好？
+  不好， 出现死锁，肯定是程序的逻辑有问题， 在快速解决死锁的情况下， 修改程序的逻辑。
+ 递归锁
+ 迅速恢复服务 递归锁替换互斥锁
+     在接下来的时间中慢慢把递归锁替换成互斥锁
+     能够完善代码的逻辑
+     提高代码的效率
+多个线程之间，用完一个资源再用另外一个资源
+先释放一个资源，再去获取一个资源的锁
+</code></pre><p>###信号量<br>    与进程的的信号量用法一样</p>
+<p>###<strong>事件Event</strong><br>    wait() 等待 事件内的信号编程True<br>    set()  把信号变成True<br>    clear  把信号变成False<br>    is_set 查看信号状态是否为True</p>
+<p>###示例代码<br>    from threading import<br>    import time          </p>
+<pre><code>def fun1(e):         
+    e.wait()   #在set没有调用之前下面的语句不执行 
+    print(&apos;你好呀，我来了&apos;) 
+def fun2(e):         
+    time.sleep(5)    
+    e.set()          
+
+if __name__ == &apos;__mai
+    e = Event()      
+    t1 = Thread(targe
+    t1.start()       
+    t2 = Thread(targe
+    t2.start()       
+</code></pre><p>###<strong>条件 Condition</strong><br>    Python提供的Condition对象提供了对复杂线程同步问题的支持。Condition被称为条件变量，除了提供与Lock类似的acquire和release方法外，还提供了wait和notify方法。线程首先acquire一个条件变量，然后判断一些条件。如果条件不满足则wait；如果条件满足，进行一些处理改变条件后，通过notify方法通知其他线程，其他处于wait状态的线程接到通知后会重新判断条件。不断的重复这一过程，从而解决复杂的同步问题<br>    from threading import Condition, Thread<br>    def fun(con, name):<br>        print(‘欢迎光临’)<br>        con.acquire()<br>        con.wait()     #使用前后都需要加锁<br>        print(‘%s go to school’%name)<br>        con.release()<br>    if <strong>name</strong> == ‘<strong>main</strong>‘:<br>        con = Condition()<br>        for i in range(10):<br>            t = Thread(target=fun, args=(con, i))<br>            t.start()<br>        con.acquire()                                                                      </p>
+<pre><code># con.notify(4)   #使用前后都需要加锁  每次默认一个，参数代表通过的次数                                     
+# con.notify_all()                                                                 
+con.notifyAll()                                                                    
+con.release()       
+</code></pre><p>###定时器 Timer<br>定时器，指定n秒后执行某个操作</p>
+<pre><code>from threading import Thread, Timer                       
+def func():                                               
+    print(&apos;Timer: going to &apos;)                             
+if __name__ == &apos;__main__&apos;:                                
+    t = Timer(5, func)                                    
+    t.start()                                   
+</code></pre><p>###线程队列 queue队列<br>跟队列进程队列一样的用法</p>
+<pre><code>q = queue.Queue()         
+q.put(1)                  
+q.put(2)                  
+q.put(3)                  
+#先进先出原则                   
+print(q.get())    #1      
+print(q.get())    #2      
+print(q.get())    #3      
+</code></pre><p>###<strong>线程队列 LifoQueue</strong><br>和栈类似先进后出</p>
+<pre><code>from queue import LifoQueue
+q = LifoQueue()
+q.put(1)
+q.put(2)
+q.put(3)
+print(q.get()) #3
+print(q.get()) #2
+print(q.get()) #1
+</code></pre><p>###<strong>PriorityQueue</strong><br>存储数据时可设置优先级的队列</p>
+<pre><code>from queue import PriorityQueue
+q = PriorityQueue()
+q.put((3,&apos;lei&apos;))
+q.put((2,&apos;wen&apos;))
+q.put((1,&apos;xuan&apos;))
+print(q.get())
+print(q.get())
+print(q.get())
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#递归锁可以解决互斥锁的死锁问题"><span class="toc-number">1.</span> <span class="toc-text">递归锁可以解决互斥锁的死锁问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#递归锁能够快速的解决死锁问题"><span class="toc-number">1.1.</span> <span class="toc-text">递归锁能够快速的解决死锁问题</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/线程知识点/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/线程知识点/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/线程知识点/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/线程知识点/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/线程知识点/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/线程知识点/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="#1：网络编程之socketserver ###1:首先socketserver 服务器调用socketserver 模块 ###2:继承了socketserver.BaseRequestHandler ###3:在父类的基础上重写了handle ##下面是一个简单的文件登录文件上传的例子 ###server端    import socketserver    import json    im">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leiwenxuan">
+<meta property="og:url" content="http://yoursite.com/2018/10/02/socket/index.html">
+<meta property="og:site_name" content="Leiwenxuan">
+<meta property="og:description" content="#1：网络编程之socketserver ###1:首先socketserver 服务器调用socketserver 模块 ###2:继承了socketserver.BaseRequestHandler ###3:在父类的基础上重写了handle ##下面是一个简单的文件登录文件上传的例子 ###server端    import socketserver    import json    im">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-17T14:14:04.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leiwenxuan">
+<meta name="twitter:description" content="#1：网络编程之socketserver ###1:首先socketserver 服务器调用socketserver 模块 ###2:继承了socketserver.BaseRequestHandler ###3:在父类的基础上重写了handle ##下面是一个简单的文件登录文件上传的例子 ###server端    import socketserver    import json    im">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Leiwenxuan</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/02/操作系统与进程的基础概念/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/02/multiprocess进程-锁-信号量-事件/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/socket/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/socket/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/socket/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/socket/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/socket/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leiwenxuan</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-02T04:24:38.992Z" itemprop="datePublished">2018-10-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>#1：网络编程之socketserver</p>
+<p>###1:首先socketserver 服务器调用socketserver 模块</p>
+<p>###2:继承了socketserver.BaseRequestHandler</p>
+<p>###3:在父类的基础上重写了handle</p>
+<p>##下面是一个简单的文件登录文件上传的例子</p>
+<p>###server端<br>    import socketserver<br>    import json<br>    import struct<br>    import socket</p>
+<pre><code>class MyTCPHandler(socketserver.BaseRequestHandler):
+
+
+def handle(self):
+    flag = self.login_check()
+    while flag:
+        try:
+            self.data = self.request.recv(1024).strip()
+            print(&apos;{} wrote&apos;.format(self.client_address[0]))
+            print(self.data)
+            self.request.send(self.data.upper())
+            print(self.data.decode(&apos;utf-8&apos;))
+            if self.data.decode(&apos;utf-8&apos;) == &apos;2&apos;:
+                self.uploading()
+
+        except ConnectionResetError as e:
+            print(&apos;error&apos;, e)
+            break
+
+def login_check(self):
+    dic_user = {
+        &apos;name&apos;: &apos;qwer&apos;,
+        &apos;pwad&apos;: &apos;1234&apos;
+    }
+    dic_clinet = self.request.recv(1024).strip()
+    dic_clinet = json.loads(dic_clinet)
+    print(dic_clinet)
+    if dic_user[&apos;name&apos;] == dic_clinet[&apos;name&apos;] and \
+            dic_user[&apos;pwad&apos;] == dic_clinet[&apos;pwad&apos;]:
+        self.request.send(b&apos;True&apos;)
+        return True
+
+def uploading(self):
+    &apos;&apos;&apos;接受上传文件&apos;&apos;&apos;
+    ret = self.request.recv(1024)
+    dic_client = json.loads(ret)
+    print(dic_client)
+    self.request.send(b&apos;Start To upload&apos;)
+    print(&apos;Start the download&apos;)
+    size = dic_client[&apos;size&apos;]
+    with open(dic_client[&apos;filename&apos;],&apos;wb&apos;) as f:
+        while size:
+            ret = self.request.recv(1024)
+            f.write(ret)
+            size -= len(ret)
+    print(&apos;下载完毕！&apos;)
+
+
+
+if __name__ == &apos;__main__&apos;:
+    Host, port = &apos;127.0.0.1&apos;, 9999
+    # sever = socketserver.TCPServer((Host, port), MyTCPHandler)
+    sever = socketserver.ThreadingTCPServer((Host, port), MyTCPHandler)
+    sever.serve_forever()
+</code></pre><p>###client端</p>
+<pre><code>import socket
+import json
+import os
+import sys
+import time
+
+#进度条
+import time
+from tqdm import tqdm
+
+# for i in tqdm(range(100)):
+#     time.sleep(0.05)
+
+def processBar(num, total):
+
+    rate = num / total
+    rate_num = int(rate * 100)
+    if rate_num == 100:
+        r = &apos;\r%s&gt;%d%%\n&apos; % (&apos;|&apos; * rate_num, rate_num,)
+    else:
+        r = &apos;\r%s&gt;%d%%&apos; % (&apos;|&apos; * rate_num, rate_num,)
+    sys.stdout.write(r)
+    sys.stdout.flush
+
+
+class Client():
+    &apos;&apos;&apos;客户端&apos;&apos;&apos;
+    cmd_list = [
+        (&apos;下载文件&apos;, &apos;ncftpget&apos;),
+        (&apos;上传文件&apos;, &apos;upload&apos;),
+        (&apos;切换目录&apos;, &apos;chdir&apos;),
+        (&apos;创建目录&apos;, &apos;create_directory&apos;),
+        (&apos;删除文件或者目录&apos;,&apos;expurgate &apos;),
+    ]
+    def __init__(self):
+        self.client = socket.socket() #实例socket对象
+    def connect(self, ip, port):
+        &apos;&apos;&apos;绑定端口&apos;&apos;&apos;
+        self.client.connect((ip, port))
+    def logon(self):
+        &apos;&apos;&apos;用户登录&apos;&apos;&apos;
+        name = input(&apos;user_name:&apos;)
+        pawd = input(&apos;passwork:&apos;)
+        user_dic = {
+            &apos;name&apos;: name,
+            &apos;pwad&apos;: pawd
+        }
+        self.client.send(json.dumps(user_dic).encode(&apos;utf-8&apos;))
+        ret = self.client.recv(1024).decode(&apos;utf-8&apos;)
+        print(ret)
+        return ret
+    def User_input(self):
+        flag = self.logon()
+        name_path = &apos;/home/&apos;
+        while flag:
+            for index, val in enumerate(self.cmd_list, 1):
+                print(&apos;%s  %s&apos;%(index, val[0]))
+            inp = input(&apos;%s:&apos;%name_path)
+            self.client.send(inp.encode(&apos;utf-8&apos;))
+            ret = self.client.recv(1024).decode(&apos;utf-8&apos;)
+            if inp == &apos;2&apos;:
+                self.upload()
+
+        else:
+            print(&apos;密码错误！&apos;)
+
+    def ncftpget(self):
+        &apos;&apos;&apos;下载文件&apos;&apos;&apos;
+    def upload(self):
+        &apos;&apos;&apos;上传文件&apos;&apos;&apos;
+        path_name = r&apos;G:\python笔记\Pythonjing\day18\video\01 深圳校区 python fullstuck 1期 day18 内容回顾.mp4&apos;
+        size = os.path.getsize(path_name)
+        print(size)
+        total = size
+        dic_user = {
+            &apos;means&apos;: &apos;uploading&apos;,
+            &apos;filename&apos;: &apos;test.mp4&apos;,
+            &apos;size&apos;: size,
+        }
+        self.client.send(json.dumps(dic_user).encode(&apos;utf-8&apos;))
+        ret = self.client.recv(1024)
+        print(ret)
+        with open(path_name, &apos;rb&apos;) as f:
+            count = 0
+            time_old = time.clock()
+            pbar = tqdm(total=size)
+            while size:
+                data = f.read(1024)
+                self.client.send(data)
+                size -= len(data)
+                count += len(data)
+
+                pbar.update(len(data)) #进度条
+
+                # processBar(count, total) #进度条
+            time_new = time.clock()
+            pbar.close()
+            print(&apos;上传完毕！一个用时%s秒&apos;%int(time_new - time_old))
+
+
+    def chdir(self):
+        &apos;&apos;&apos;切换目录&apos;&apos;&apos;
+    def create_directory(self):
+        &apos;&apos;&apos;创建目录&apos;&apos;&apos;
+    def expurgate(self):
+        &apos;&apos;&apos;删除文件或者文件夹&apos;&apos;&apos;
+
+if __name__ == &apos;__main__&apos;:
+    # Host, port = &apos;127.0.0.1&apos;, 9999
+    Host, port = &apos;192.168.16.46&apos;, 9999
+    cl = Client()
+    cl.connect(Host, port)
+    cl.User_input()
+</code></pre>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/02/socket/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/02/socket/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/02/socket/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2018/10/02/socket/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/02/socket/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/02/socket/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
