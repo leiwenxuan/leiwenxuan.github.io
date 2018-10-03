@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Leiwenxuan</name>
     
   </author>
   
@@ -125,7 +125,7 @@
     <link href="http://yoursite.com/2018/10/02/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
     <id>http://yoursite.com/2018/10/02/异常处理/</id>
     <published>2018-10-02T04:24:38.954Z</published>
-    <updated>2018-10-03T10:07:43.356Z</updated>
+    <updated>2018-10-03T10:16:36.898Z</updated>
     
     <content type="html"><![CDATA[<p>##1：初始异常</p><p>###即便是放在try语句中的内容，在遇到报错之后也会中断这段语句的执行</p><p>####1.1 类型异常<br>    l = [‘登录’, ‘注册’]<br>    try:<br>        num = int(input(‘input :’)) #输入：非数字报错 invalid literal for int() with base 10: ‘j’<br>    except ValueError:<br>        print(‘异常：num’)</p><p>####1.2列表索引异常<br>    try:<br>        num = int(input(‘input:’))<br>        print(l[num -1]) #输入数字大于2 IndexError: list index out of range<br>    except IndexError:<br>        print(‘异常：索引超标!’)</p><p>####1.3多分支异常<br>    try:<br>        num = int(input(‘input: ‘))<br>        print(l[num-1])<br>    except IndexError:<br>        print(‘索引越界！’)<br>    except ValueError:<br>        print(‘类型有误！’)</p><p>####1.4多异常<br>    try:<br>           num = int(input(‘input:’))<br>          print(l[num -1])<br>    except (ValueError, IndexError):<br>          print(‘报错！’)</p><p>####1.5万能异常</p><pre><code>try:    l = []    # l[3]    open(&apos;aaa&apos;)except Exception:    print(&apos;异常！&apos;)</code></pre><p>####1.6 as 异常<br>    try:<br>        l[3] #list index out of range<br>        name #name ‘name’ is not defined<br>    except Exception as e:<br>        print(e) #抛出异常的内容</p><p>####1.7 多异常加万能异常<br>    try:<br>        num = int(input(‘input :’))<br>        print(l[num -1])<br>    except (ValueError, IndexError):<br>        print(‘异常！’) #持性了这里下面的将不在执行<br>    except Exception as e:<br>        print(e)</p><p>##2：异常的其他处理机制</p><p>####2.1 else 机制<br>    try:<br>        print(‘My name is Dan’)<br>    except ValueError:<br>        print(‘name is leiwenxuan’)<br>    else:<br>        print(‘出错了’) #报错将不执行, 没触发异常将执行</p><p>###2.2finally</p><pre><code>try:    name #异常    print(&apos;hello !&apos;)except NameError:    print(&apos;报错！&apos;)finally:    print(&apos;你好！&apos;) #无论异常处不触发都执行# finally 无论如何都要执行# 收尾工作，打开了一个文件，占用了一个网络资源，打开了一个和数据库的链接try:    f = open(&apos;content&apos;)    name #即使报错了，也执行finallyfinally:    f.close()    print(&apos;执行了！&apos;)</code></pre><p>###2.3 强制异常<br>    raise NameError(‘name’)<br>    raise NameError</p>]]></content>
     
