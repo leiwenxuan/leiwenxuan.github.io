@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-05T06:26:05.542Z</updated>
+  <updated>2018-10-08T08:01:08.858Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PyMysql模块学习</title>
+    <link href="http://yoursite.com/2018/10/08/Python_mysql/"/>
+    <id>http://yoursite.com/2018/10/08/Python_mysql/</id>
+    <published>2018-10-08T06:47:14.000Z</published>
+    <updated>2018-10-08T08:01:08.858Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一：连接Mysql数据库"><a href="#一：连接Mysql数据库" class="headerlink" title="一：连接Mysql数据库"></a>一：连接Mysql数据库</h1><p>1.1连接条件：</p><ol><li>首先有个启动的mysql数据</li><li>有连接数据库的账号和密码</li><li>有权限操作数据库</li></ol><p>1.2使用pymysql</p><pre><code>import pymysql  #导入模块conn = pymysql.connect(    host=&apos;127.0.0.1&apos;,  #连接地址    port=&apos;3306&apos;,  #端口    user=&apos;root&apos;,  #mysql用户名    password=&apos;123&apos;,  #密码    database=&apos;db1008&apos;,  #数据库    charset=&apos;utf8&apos;  #编码方式)cursor = conn.cursor()  #获取光标对象，才可以操作数据库cursor.execute(&apos;show tables;&apos;)  #执行sql操作cursor.close()  #关闭光标conn.close()  #关闭连接</code></pre><h1 id="二：使用pymsql增删改查"><a href="#二：使用pymsql增删改查" class="headerlink" title="二：使用pymsql增删改查"></a>二：使用pymsql增删改查</h1><h2 id="2-1增删改（用到的操作相似）"><a href="#2-1增删改（用到的操作相似）" class="headerlink" title="2.1增删改（用到的操作相似）"></a>2.1增删改（用到的操作相似）</h2><pre><code>import pymysqlconn = pymysql.connect(    host=&apos;127.0.0.1&apos;,    port=3306,    user=&apos;root&apos;,    password=&apos;123&apos;,    database=&apos;db1008&apos;,    charset=&apos;utf8&apos;)cursor = conn.cursor()name = input(&apos;input_name:&apos;)pwd = input(&apos;inputZ_pwd:&apos;)#增加操作sql = &apos;insert into userinfo(username, possword) values(%s, %s);&apos;cursor.execute(sql,[name, pwd])  #防止SQL注入问题conn.commit()  #更新数据库 否则添加失败conn.rollback() 回滚取消操作。不进行添加#删除操作sql = &apos;delete from userinfo where username=%s and possword=%s&apos;cursor.execute(sql,[name, pwd])  #防止SQL注入问题#改操作sql = &apos;update userinfo set username=%s  where  possword=%s&apos;cursor.execute(sql,[name, pwd])  #防止SQL注入问题cursor.close()conn.close()</code></pre><h3 id="2-1-1-获取插入数据的ID-关联操作时会用到"><a href="#2-1-1-获取插入数据的ID-关联操作时会用到" class="headerlink" title="2.1.1 获取插入数据的ID(关联操作时会用到)"></a>2.1.1 获取插入数据的ID(关联操作时会用到)</h3><pre><code>import pymysqlconn = pymysql.connect(    host=&apos;127.0.0.1&apos;,    port=3306,    user=&apos;root&apos;,    password=&apos;123&apos;,    database=&apos;db1008&apos;,    charset=&apos;utf8&apos;)cursor = conn.cursor()name = input(&apos;input_name:&apos;)pwd = input(&apos;inputZ_pwd:&apos;)sql = &quot;insert into userinfo values(3,%s,%s);&quot;cursor.execute(sql, [name, pwd])conn.commit()id = cursor.lastrowidprint(id)cursor.close()conn.close()</code></pre><h2 id="2-2查询"><a href="#2-2查询" class="headerlink" title="2.2查询"></a>2.2查询</h2><h3 id="ret-cursor-fetchone-单行查询"><a href="#ret-cursor-fetchone-单行查询" class="headerlink" title="ret = cursor.fetchone()  # 单行查询"></a>ret = cursor.fetchone()  # 单行查询</h3><h3 id="ret-cursor-fetchall-查询所有的条件"><a href="#ret-cursor-fetchall-查询所有的条件" class="headerlink" title="ret = cursor.fetchall()  # 查询所有的条件"></a>ret = cursor.fetchall()  # 查询所有的条件</h3><h3 id="ret-cursor-fetchmany-2-查询2条"><a href="#ret-cursor-fetchmany-2-查询2条" class="headerlink" title="ret = cursor.fetchmany(2)  # 查询2条"></a>ret = cursor.fetchmany(2)  # 查询2条</h3><pre><code>import pymysqlconn = pymysql.connect(    host=&apos;127.0.0.1&apos;,    port=3306,    user=&apos;root&apos;,    password=&apos;123&apos;,    database=&apos;db1008&apos;,    charset=&apos;utf8&apos;)cursor = conn.cursor()name = input(&apos;input_name:&apos;)pwd = input(&apos;inputZ_pwd:&apos;)sql = &quot;select * from userinfo;&quot;cursor.execute(sql)# ret = cursor.fetchone()  # 单行查询# ret = cursor.fetchall()  # 查询所有的条件ret = cursor.fetchmany(2)  # 查询2条print(ret)cursor.close()conn.close()</code></pre><h3 id="2-2-1-进阶用法-移动光标"><a href="#2-2-1-进阶用法-移动光标" class="headerlink" title="2.2.1 进阶用法 移动光标"></a>2.2.1 进阶用法 移动光标</h3><pre><code># 可以获取指定数量的数据cursor.fetchmany(3)# 光标按绝对位置移动1cursor.scroll(1, mode=&quot;absolute&quot;)# 光标按照相对位置(当前位置)移动1cursor.scroll(1, mode=&quot;relative&quot;)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一：连接Mysql数据库&quot;&gt;&lt;a href=&quot;#一：连接Mysql数据库&quot; class=&quot;headerlink&quot; title=&quot;一：连接Mysql数据库&quot;&gt;&lt;/a&gt;一：连接Mysql数据库&lt;/h1&gt;&lt;p&gt;1.1连接条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先有个启动的m
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="http://yoursite.com/categories/mysql/"/>
+    
+    
+      <category term="数据操作Python" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9CPython/"/>
+    
+  </entry>
   
   <entry>
     <title>Mysql增删改查</title>
