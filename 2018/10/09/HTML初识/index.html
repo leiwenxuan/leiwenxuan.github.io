@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="网站关键字, key, key1, key2, key3"><title>HTML初识 | 雷文轩</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">HTML初识</h1><a id="logo" href="/.">雷文轩</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">HTML初识</h1><div class="post-meta"><a href="/2018/10/09/HTML初识/#comments" class="comment-count"></a><p><span class="date">Oct 09, 2018</span><span><a href="/categories/html/" class="category">html</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h1 id="html初识"><a href="#html初识" class="headerlink" title="html初识"></a>html初识</h1><h2 id="1-CS-–-gt-BS架构"><a href="#1-CS-–-gt-BS架构" class="headerlink" title="1. CS   –&gt;  BS架构"></a>1. CS   –&gt;  BS架构</h2><h2 id="2-Web的原理"><a href="#2-Web的原理" class="headerlink" title="2. Web的原理"></a>2. Web的原理</h2><pre><code>浏览器地址栏输入URL--&gt; 浏览器往服务端发消息 
+--&gt; 服务端接收消息--&gt; 服务端回消息（从文件中读取数据）
+--&gt; 浏览器收到消息(按照一个约定好的规则展示出来)
+</code></pre><h2 id="3-HTML初识"><a href="#3-HTML初识" class="headerlink" title="3. HTML初识"></a>3. HTML初识</h2><pre><code>1. 就是一些特殊符号，不同的符号有不同的显示效果
+2. 学前端就是学怎么写HTML文件,学后端框架就是学怎么样返回写好的HTML文件
+</code></pre><h2 id="4-HTML规则：https-www-cnblogs-com-liwenzhou-p-7988087-html"><a href="#4-HTML规则：https-www-cnblogs-com-liwenzhou-p-7988087-html" class="headerlink" title="4. HTML规则：https://www.cnblogs.com/liwenzhou/p/7988087.html"></a>4. HTML规则：<a href="https://www.cnblogs.com/liwenzhou/p/7988087.html" target="_blank" rel="noopener">https://www.cnblogs.com/liwenzhou/p/7988087.html</a></h2><h3 id="4-1-HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题"><a href="#4-1-HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题" class="headerlink" title="4.1. HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题"></a>4.1. HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题</h3><h3 id="4-2-基本标签"><a href="#4-2-基本标签" class="headerlink" title="4.2. 基本标签"></a>4.2. 基本标签</h3><h3 id="4-3-块级标签和行内标签"><a href="#4-3-块级标签和行内标签" class="headerlink" title="4.3. 块级标签和行内标签"></a>4.3. 块级标签和行内标签</h3><pre><code>div和span标签的特点：
+    没有自带的样式，方便后续使用CSS调整样式！
+块级标签：
+    自己独占一行！
+    p
+    h1~h6
+    hr
+    div
+
+行内标签（内联标签）：
+    默认都在一行显示！
+    b、i、u、s
+    span
+</code></pre><h3 id="4-4-标签支持嵌套"><a href="#4-4-标签支持嵌套" class="headerlink" title="4.4. 标签支持嵌套"></a>4.4. 标签支持嵌套</h3><pre><code>1. 块级标签可以包含内联标签
+2. p标签不能包含p标签和div标签
+</code></pre><h3 id="4-5-标签分类"><a href="#4-5-标签分类" class="headerlink" title="4.5. 标签分类"></a>4.5. 标签分类</h3><pre><code>1. 展示给用户看的标签
+2. 获取用户输入的标签
+    form标签（表单标签）
+</code></pre><h2 id="表格-lt-DOCTYPE-html-gt"><a href="#表格-lt-DOCTYPE-html-gt" class="headerlink" title="表格&lt;!DOCTYPE html&gt;"></a>表格&lt;!DOCTYPE html&gt;</h2><pre><code>&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--&lt;table border=&quot;1&quot; cellpadding=&quot;10&quot; cellspacing=&quot;5&quot;&gt;--&gt;
+    &lt;table border=&quot;1&quot; &gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;id&lt;/th&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;pwd&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;qwer&lt;/td&gt;
+                &lt;td&gt;1234&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;qaz&lt;/td&gt;
+                &lt;td&gt;1234&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;wen&lt;/td&gt;
+                &lt;td&gt;1234&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="获取用户输入的标签"><a href="#获取用户输入的标签" class="headerlink" title="获取用户输入的标签"></a>获取用户输入的标签</h2><h2 id="1-input"><a href="#1-input" class="headerlink" title="1. input"></a>1. input</h2><h3 id="1-根据type类型划分"><a href="#1-根据type类型划分" class="headerlink" title="1. 根据type类型划分"></a>1. 根据type类型划分</h3><pre><code>1. text
+2. password
+4. email
+5. date
+6. radio      --&gt; 单选
+7. checkbox   --&gt; 多选
+
+7. button     --&gt; 普通按钮，多用于使用JS代码绑定事件
+8. submit     --&gt; 提交
+9. reset      --&gt; 重置    
+
+10. file      --&gt; 上传文件
+</code></pre><h2 id="2-select"><a href="#2-select" class="headerlink" title="2. select"></a>2. select</h2><pre><code>1. select标签内部包含的是option，需要配置value属性
+    默认选中：selected=&quot;selected&quot;
+2. 多选
+    multiple
+3. textare
+</code></pre><h3 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form action=&quot;http://127.0.0.1:8081&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;p&gt;
+        &lt;label for=&quot;i1&quot;&gt;用户名：&lt;/label&gt;
+      &lt;input id=&quot;i1&quot; type=&quot;text&quot; name=&quot;username&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;密码：
+            &lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;
+        &lt;/label&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        邮箱：
+        &lt;input disabled type=&quot;email&quot; name=&quot;email&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;出生日期：
+        &lt;input type=&quot;date&quot; name=&quot;birthday&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        头像：
+        &lt;input type=&quot;file&quot; name=&quot;avatar&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        隐藏的输入框：
+        &lt;input type=&quot;hidden&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;性别：
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot; checked&gt;男
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt;女
+    &lt;/p&gt;
+    &lt;p&gt;
+        爱好：
+        &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;basketball&quot;&gt;篮球
+        &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;football&quot;&gt;足球
+        &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;doublecolorball&quot;&gt;双色球
+    &lt;/p&gt;
+    &lt;label for=&quot;s1&quot;&gt;城市&lt;/label&gt;
+    &lt;select id=&quot;s1&quot; name=&quot;city1&quot;&gt;
+        &lt;option value=&quot;010&quot;&gt;北京&lt;/option&gt;
+        &lt;option value=&quot;021&quot;&gt;上海&lt;/option&gt;
+        &lt;option value=&quot;020&quot;&gt;广州&lt;/option&gt;
+        &lt;option value=&quot;0755&quot; selected=&quot;selected&quot;&gt;深圳&lt;/option&gt;
+    &lt;/select&gt;
+     &lt;select name=&quot;city2&quot; multiple=&quot;multiple&quot;&gt;
+            &lt;option value=&quot;010&quot;&gt;北京&lt;/option&gt;
+        &lt;option value=&quot;021&quot;&gt;上海&lt;/option&gt;
+        &lt;option value=&quot;020&quot;&gt;广州&lt;/option&gt;
+        &lt;option value=&quot;0755&quot; selected=&quot;selected&quot;&gt;深圳&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p&gt;
+        个人简介：
+        &lt;textarea name=&quot;info&quot;  cols=&quot;60&quot; rows=&quot;40&quot;&gt;
+
+        &lt;/textarea&gt;
+    &lt;/p&gt;
+
+
+    &lt;input type=&quot;button&quot; value=&quot;按钮&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+    &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+&lt;/form&gt;
+
+{&quot;name属性的值&quot;: 用户填写的内容}
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><pre><code>1. 所有放在form标签中获取用户输入的标签，必须要有name属性
+2. form标签有action属性和method属性
+    1. action：控制往哪里提交数据
+    2. method：控制用什么方式提交
+    3. 上传文件需要额外配置enctype=&quot;multipart/form-data&quot;
+3. form要提交数据必须要有submit按钮        
+</code></pre></div><div class="tags"><a href="/tags/MySQL练习/">MySQL练习</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/10/10/CSS-给HTML设置样式/" class="pre">CSS-给HTML设置样式</a><a href="/2018/10/08/mysql练习 copy/" class="next">Mysql 小练习</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html初识"><span class="toc-text">html初识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-CS-–-gt-BS架构"><span class="toc-text">1. CS   –&gt;  BS架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Web的原理"><span class="toc-text">2. Web的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTML初识"><span class="toc-text">3. HTML初识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTML规则：https-www-cnblogs-com-liwenzhou-p-7988087-html"><span class="toc-text">4. HTML规则：https://www.cnblogs.com/liwenzhou/p/7988087.html</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题"><span class="toc-text">4.1. HTML中把连续的空格和换行都解析成一个空格，不存在缩进的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-基本标签"><span class="toc-text">4.2. 基本标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-块级标签和行内标签"><span class="toc-text">4.3. 块级标签和行内标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-标签支持嵌套"><span class="toc-text">4.4. 标签支持嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-标签分类"><span class="toc-text">4.5. 标签分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格-lt-DOCTYPE-html-gt"><span class="toc-text">表格&lt;!DOCTYPE html&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取用户输入的标签"><span class="toc-text">获取用户输入的标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-input"><span class="toc-text">1. input</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-根据type类型划分"><span class="toc-text">1. 根据type类型划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-select"><span class="toc-text">2. select</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实例"><span class="toc-text">代码实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项："><span class="toc-text">注意事项：</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/CSS-给HTML设置样式/">CSS-给HTML设置样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/HTML初识/">HTML初识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/mysql练习 copy/">Mysql 小练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Mysql增删改查/">Mysql增删改查</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Python_mysql/">PyMysql模块学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/多表结构的创建与分析/">多表结构的创建与分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/Mysql/">mysql基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/03/努力前行/">明天会更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/hexo个人博客搭建整理/">hexo个人博客搭建整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/操作系统与进程的基础概念/">操作系统和进程的基础概念</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人感想/">个人感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云服务器/">云服务器</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/MySQL练习/" style="font-size: 15px;">MySQL练习</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/数据操作Python/" style="font-size: 15px;">数据操作Python</a> <a href="/tags/centOS/" style="font-size: 15px;">centOS</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/珍惜/" style="font-size: 15px;">珍惜</a> <a href="/tags/多表/" style="font-size: 15px;">多表</a> <a href="/tags/数据操作/" style="font-size: 15px;">数据操作</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Leiwenxuan.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

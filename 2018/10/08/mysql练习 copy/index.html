@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="网站关键字, key, key1, key2, key3"><title>Mysql 小练习 | 雷文轩</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Mysql 小练习</h1><a id="logo" href="/.">雷文轩</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Mysql 小练习</h1><div class="post-meta"><a href="/2018/10/08/mysql练习 copy/#comments" class="comment-count"></a><p><span class="date">Oct 08, 2018</span><span><a href="/categories/mysql/" class="category">mysql</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="1、查询男生、女生的人数；"><a href="#1、查询男生、女生的人数；" class="headerlink" title="1、查询男生、女生的人数；"></a>1、查询男生、女生的人数；</h2><pre><code>select gender, count(gender) from student group by gender;
+</code></pre><p>  +——–+—————+<br>    | gender | count(gender) |<br>    +——–+—————+<br>    | 女     |             6 |<br>    | 男     |            10 |<br>    +——–+—————+</p>
+<h2 id="2、查询姓“张”的学生名单；"><a href="#2、查询姓“张”的学生名单；" class="headerlink" title="2、查询姓“张”的学生名单；"></a>2、查询姓“张”的学生名单；</h2><pre><code>select * from student where sname like &apos;张%&apos;;
+</code></pre><p>  +—–+——–+———-+——–+<br>    | sid | gender | class_id | sname  |<br>    +—–+——–+———-+——–+<br>    |   3 | 男     |        1 | 张三   |<br>    |   4 | 男     |        1 | 张一   |<br>    |   5 | 女     |        1 | 张二   |<br>    |   6 | 男     |        1 | 张四   |<br>    +—–+——–+———-+——–+</p>
+<h2 id="3、课程平均分从高到低显示"><a href="#3、课程平均分从高到低显示" class="headerlink" title="3、课程平均分从高到低显示"></a>3、课程平均分从高到低显示</h2><pre><code>select * ,avg(num) from score group by course_id order by  avg(num) asc;
+</code></pre><p>  +—–+————+———–+—–+———-+<br>    | sid | student_id | course_id | num | avg(num) |<br>    +—–+————+———–+—–+———-+<br>    |   1 |          1 |         1 |  10 |  53.4167 |<br>    |   8 |          2 |         3 |  68 |  64.4167 |<br>    |   2 |          1 |         2 |   9 |  65.0909 |<br>    |   5 |          1 |         4 |  66 |  85.2500 |<br>    +—–+————+———–+—–+———-+</p>
+<h2 id="4、查询有课程成绩小于60分的同学的学号、姓名；"><a href="#4、查询有课程成绩小于60分的同学的学号、姓名；" class="headerlink" title="4、查询有课程成绩小于60分的同学的学号、姓名；"></a>4、查询有课程成绩小于60分的同学的学号、姓名；</h2><pre><code> select sname, student_id from score, student where student.sid = score.student_id and score.num &lt; 60;
++--------+------------+
+| sname  | student_id |
++--------+------------+
+| 理解   |          1 |
+| 理解   |          1 |
+| 钢蛋   |          2 |
+| 张一   |          4 |
+| 张二   |          5 |
+| 张四   |          6 |
+| 铁锤   |          7 |
+| 李三   |          8 |
+| 李一   |          9 |
+| 李二   |         10 |
+| 李四   |         11 |
+| 如花   |         12 |
++--------+------------+
+</code></pre><h2 id="5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；"><a href="#5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；" class="headerlink" title="5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；"></a>5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；</h2><pre><code>  select sname, sid from student where sid in (
+     select student_id from score where course_id in
+    (select course_id from score where student_id = 1)
+        group by student_id having student_id != 1);
++--------+-----+
+| sname  | sid |
++--------+-----+
+| 钢蛋   |   2 |
+| 张三   |   3 |
+| 张一   |   4 |
+| 张二   |   5 |
+| 张四   |   6 |
+| 铁锤   |   7 |
+| 李三   |   8 |
+| 李一   |   9 |
+| 李二   |  10 |
+| 李四   |  11 |
+| 如花   |  12 |
++--------+-----+
+</code></pre><h2 id="6、查询出只选修了一门课程的全部学生的学号和姓名；"><a href="#6、查询出只选修了一门课程的全部学生的学号和姓名；" class="headerlink" title="6、查询出只选修了一门课程的全部学生的学号和姓名；"></a>6、查询出只选修了一门课程的全部学生的学号和姓名；</h2><pre><code>select sid, sname from student where sid in (select student_id from score group by     student_id having count(student_id) =1 );
++-----+--------+
+| sid | sname  |
++-----+--------+
+|  13 | 刘三   |
++-----+--------+
+</code></pre><h2 id="7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；"><a href="#7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；" class="headerlink" title="7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；"></a>7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；</h2><pre><code>select course_id, max(num) as &apos;最高分&apos;, min(num) as &apos;最低分&apos; from score group by course_id; 
++-----------+-----------+-----------+
+| course_id | 最高分    | 最低分    |
++-----------+-----------+-----------+
+|         1 |        91 |         8 |
+|         2 |       100 |         9 |
+|         3 |        87 |        43 |
+|         4 |       100 |        22 |
++-----------+-----------+-----------+
+</code></pre><h2 id="8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；"><a href="#8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；" class="headerlink" title="8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；"></a>8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；</h2><pre><code>方法1：
+select sid, sname from student where (select num from score where course_id =1 and student.sid =student_id) &gt; (select num from score where course_id =2 and student.sid =student_id);
+ 方法2：
+  select s1.student_id, s1.num as slnum, s2.num as s2num from score as s1, score as s2 where s1.student_id = s2.student_id and s1.course_id = 1 and s2.course_id =2 and s1.num &gt; s2.num;
++------------+-------+-------+
+| student_id | slnum | s2num |
++------------+-------+-------+
+|          1 |    10 |     9 |
+|          3 |    77 |    66 |
+|          4 |    79 |    11 |
+|          5 |    79 |    11 |
+|          9 |    91 |    88 |
+|         10 |    90 |    77 |
+|         11 |    90 |    77 |
+|         12 |    90 |    77 |
++------------+-------+-------+
+</code></pre><h2 id="9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；"><a href="#9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；" class="headerlink" title="9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；"></a>9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；</h2><pre><code>方法 1： 分开查询
+select student.sid, student.sname from student where
+  (select num from score, course  where course_id = course.cid and course.cname = &apos;生物&apos; and student_id=student.sid) &gt; 
+  (select num from score, course  where course_id = course.cid and course.cname = &apos;物理&apos; and student_id= student.sid);
+方法2：
+select s1.student_id from score as s1, score as s2 where
+-&gt; s1.student_id = s2.student_id and s1.course_id =(select cid from course where cname = &apos;生物&apos;) and s2.course_id =(select cid from course where cname =&apos;物理&apos;) and s1.num &gt; s2.num;
++------------+
+| student_id |
++------------+
+|          1 |
+|          3 |
+|          4 |
+|          5 |
+|          9 |
+|         10 |
+|         11 |
+|         12 |
++------------+
+</code></pre><h2 id="10、查询平均成绩大于60分的同学的学号和平均成绩"><a href="#10、查询平均成绩大于60分的同学的学号和平均成绩" class="headerlink" title="10、查询平均成绩大于60分的同学的学号和平均成绩;"></a>10、查询平均成绩大于60分的同学的学号和平均成绩;</h2><pre><code>select sid, avg(num) from score group by student_id having avg(num) &gt; 60;
+</code></pre><h2 id="11、查询所有同学的学号、姓名、选课数、总成绩；"><a href="#11、查询所有同学的学号、姓名、选课数、总成绩；" class="headerlink" title="11、查询所有同学的学号、姓名、选课数、总成绩；"></a>11、查询所有同学的学号、姓名、选课数、总成绩；</h2><pre><code>select student.sname as 姓名, score.student_id as 学号, count(score.course_id) as 选课数,  sum(score.num) as 总成绩 from student ,score where student.sid = score.student_id group by score.student_id;
++--------+--------+-----------+-----------+
+| 姓名   | 学号   | 选课数    | 总成绩    |
++--------+--------+-----------+-----------+
+| 理解   |      1 |         3 |        85 |
+| 钢蛋   |      2 |         3 |       175 |
+| 张三   |      3 |         4 |       329 |
+| 张一   |      4 |         4 |       257 |
+| 张二   |      5 |         4 |       257 |
+| 张四   |      6 |         4 |       276 |
+| 铁锤   |      7 |         4 |       264 |
+| 李三   |      8 |         4 |       264 |
+| 李一   |      9 |         4 |       268 |
+| 李二   |     10 |         4 |       297 |
+| 李四   |     11 |         4 |       297 |
+| 如花   |     12 |         4 |       297 |
+| 刘三   |     13 |         1 |        87 |
++--------+--------+-----------+-----------+
+</code></pre><h2 id="12、查询姓“李”的老师的个数；"><a href="#12、查询姓“李”的老师的个数；" class="headerlink" title="12、查询姓“李”的老师的个数；"></a>12、查询姓“李”的老师的个数；</h2><pre><code>方法1；
+select  count(tname) from teacher where tname like &apos;李%&apos;;
+方法2；
+select count(tid) from teacher where tname like &apos;李%&apos;;
++--------------+
+| count(tname) |
++--------------+
+|            2 |
++--------------+
+</code></pre><h2 id="13、查询没学过“张磊老师”课的同学的学号、姓名；"><a href="#13、查询没学过“张磊老师”课的同学的学号、姓名；" class="headerlink" title="13、查询没学过“张磊老师”课的同学的学号、姓名；"></a>13、查询没学过“张磊老师”课的同学的学号、姓名；</h2><pre><code>select sid, sname from student where sid not in ( select student_id from score where course_id =(  select cid from course where teacher_id=( select tid from teacher where tname = &apos;张磊老师&apos;)));
+</code></pre><h2 id="14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；"><a href="#14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；" class="headerlink" title="14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；"></a>14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；</h2><pre><code>select sid, sname from student where sid in ( select s1.student_id from score as s1, score as s2 where s1.student_id = s2.student_id and s1.course_id = 1 and  s2.course_id =2);
++-----+--------+
+| sid | sname  |
++-----+--------+
+|   1 | 理解   |
+|   3 | 张三   |
+|   4 | 张一   |
+|   5 | 张二   |
+|   6 | 张四   |
+|   7 | 铁锤   |
+|   8 | 李三   |
+|   9 | 李一   |
+|  10 | 李二   |
+|  11 | 李四   |
+|  12 | 如花   |
++-----+--------+
+</code></pre><h2 id="15、查询学过“李平老师”所教的所有课的同学的学号、姓名；"><a href="#15、查询学过“李平老师”所教的所有课的同学的学号、姓名；" class="headerlink" title="15、查询学过“李平老师”所教的所有课的同学的学号、姓名；"></a>15、查询学过“李平老师”所教的所有课的同学的学号、姓名；</h2><pre><code>select sid, sname from student where sid in ( select student_id from score where course_id in ( select cid from course where teacher_id =( select tid from teacher where tname = &apos;李平老师&apos;)) group by student_id);
++-----+--------+
+| sid | sname  |
++-----+--------+
+|   1 | 理解   |
+|   2 | 钢蛋   |
+|   3 | 张三   |
+|   4 | 张一   |
+|   5 | 张二   |
+|   6 | 张四   |
+|   7 | 铁锤   |
+|   8 | 李三   |
+|   9 | 李一   |
+|  10 | 李二   |
+|  11 | 李四   |
+|  12 | 如花   |
++-----+--------+
+</code></pre></div><div class="tags"><a href="/tags/MySQL练习/">MySQL练习</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/10/09/HTML初识/" class="pre">HTML初识</a><a href="/2018/10/08/Mysql增删改查/" class="next">Mysql增删改查</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、查询男生、女生的人数；"><span class="toc-text">1、查询男生、女生的人数；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、查询姓“张”的学生名单；"><span class="toc-text">2、查询姓“张”的学生名单；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、课程平均分从高到低显示"><span class="toc-text">3、课程平均分从高到低显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、查询有课程成绩小于60分的同学的学号、姓名；"><span class="toc-text">4、查询有课程成绩小于60分的同学的学号、姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；"><span class="toc-text">5、查询至少有一门课与学号为1的同学所学课程相同的同学的学号和姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、查询出只选修了一门课程的全部学生的学号和姓名；"><span class="toc-text">6、查询出只选修了一门课程的全部学生的学号和姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；"><span class="toc-text">7、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；"><span class="toc-text">8、查询课程编号“2”的成绩比课程编号“1”课程低的所有同学的学号、姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；"><span class="toc-text">9、查询“生物”课程比“物理”课程成绩高的所有学生的学号；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、查询平均成绩大于60分的同学的学号和平均成绩"><span class="toc-text">10、查询平均成绩大于60分的同学的学号和平均成绩;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、查询所有同学的学号、姓名、选课数、总成绩；"><span class="toc-text">11、查询所有同学的学号、姓名、选课数、总成绩；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、查询姓“李”的老师的个数；"><span class="toc-text">12、查询姓“李”的老师的个数；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13、查询没学过“张磊老师”课的同学的学号、姓名；"><span class="toc-text">13、查询没学过“张磊老师”课的同学的学号、姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；"><span class="toc-text">14、查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15、查询学过“李平老师”所教的所有课的同学的学号、姓名；"><span class="toc-text">15、查询学过“李平老师”所教的所有课的同学的学号、姓名；</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/CSS-给HTML设置样式/">CSS-给HTML设置样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/HTML初识/">HTML初识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/mysql练习 copy/">Mysql 小练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Mysql增删改查/">Mysql增删改查</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Python_mysql/">PyMysql模块学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/多表结构的创建与分析/">多表结构的创建与分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/Mysql/">mysql基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/03/努力前行/">明天会更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/hexo个人博客搭建整理/">hexo个人博客搭建整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/操作系统与进程的基础概念/">操作系统和进程的基础概念</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人感想/">个人感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云服务器/">云服务器</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/MySQL练习/" style="font-size: 15px;">MySQL练习</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/数据操作Python/" style="font-size: 15px;">数据操作Python</a> <a href="/tags/centOS/" style="font-size: 15px;">centOS</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/珍惜/" style="font-size: 15px;">珍惜</a> <a href="/tags/多表/" style="font-size: 15px;">多表</a> <a href="/tags/数据操作/" style="font-size: 15px;">数据操作</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Leiwenxuan.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
