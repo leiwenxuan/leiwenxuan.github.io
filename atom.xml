@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-10T12:15:54.378Z</updated>
+  <updated>2018-10-11T12:01:14.131Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS 进阶</title>
+    <link href="http://yoursite.com/2018/10/11/CSS%E8%BF%9B%E9%98%B6/"/>
+    <id>http://yoursite.com/2018/10/11/CSS进阶/</id>
+    <published>2018-10-11T07:57:57.000Z</published>
+    <updated>2018-10-11T12:01:14.131Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>CSS属性：<a href="https://www.cnblogs.com/liwenzhou/p/7999532.html" target="_blank" rel="noopener">https://www.cnblogs.com/liwenzhou/p/7999532.html</a></li></ol><h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>width属性可以为元素设置宽度。<br>height属性可以为元素设置高度。<br>块级标签才能设置宽度，内联标签的宽度由内容来决定。<br>     <style><br>        p {color: red} #优先显示<br>        body {color: #0000cc}<br>    </style></p><pre><code> &lt;style&gt;        /*显示背景的*/    .c1 {        height: 100px;          width: 100px;        color: red;        background-color: darkorange; #背景设置    }    .c2 {        height: 600px;        width: 600px;        /*设置背景图片出现的次数 位置*/        background: url(&quot;01.jpg&quot; ) no-repeat center bottom;    }雪碧图：为了减少网页请求图片的次数，将很多小图片放在一个大图片中，通过background-postion来指定background: url(&apos;xx.png&apos; no-repeat center center)</code></pre><h2 id="背景图片的设置"><a href="#背景图片的设置" class="headerlink" title="背景图片的设置"></a>背景图片的设置</h2><pre><code>repeat(默认):背景图片平铺排满整个网页repeat-x：背景图片只在水平方向上平铺repeat-y：背景图片只在垂直方向上平铺no-repeat：背景图片不平铺</code></pre><h1 id="2-边框"><a href="#2-边框" class="headerlink" title="2. 边框"></a>2. 边框</h1><pre><code>border: 1px solid red</code></pre><h2 id="边框设置属性"><a href="#边框设置属性" class="headerlink" title="边框设置属性"></a>边框设置属性</h2><pre><code>border-widthborder-styleborder-color    值    描述none    无边框。dotted    点状虚线边框。dashed    矩形虚线边框。solid    实线边框。</code></pre><h2 id="画圆和-圆角矩形"><a href="#画圆和-圆角矩形" class="headerlink" title="画圆和 圆角矩形"></a>画圆和 圆角矩形</h2><pre><code> &lt;style&gt;    .c1 {        height: 100px;        width: 100px;        background-color: red;        border-radius:            50%;    }&lt;style&gt;</code></pre><h1 id="3-display"><a href="#3-display" class="headerlink" title="3. display"></a>3. display</h1><pre><code>1. none2. inline3. block4. inline-blockdisplay: none和visibility: hidden的区别？    都是隐藏页面上的标签    display: none隐藏标签并且不占位置    visibility: hidden 隐藏标签的同时会占住位置</code></pre><p><img src="https://i.imgur.com/zp0CS2F.png" alt=""></p><h1 id="4-盒子模型"><a href="#4-盒子模型" class="headerlink" title="4. 盒子模型"></a>4. 盒子模型</h1><h3 id="margin-用于控制元素与元素之间的距离；margin的最基本用途就是控制元素周围空间的间隔，从视觉角度上达到相互隔开的目的。"><a href="#margin-用于控制元素与元素之间的距离；margin的最基本用途就是控制元素周围空间的间隔，从视觉角度上达到相互隔开的目的。" class="headerlink" title="margin:用于控制元素与元素之间的距离；margin的最基本用途就是控制元素周围空间的间隔，从视觉角度上达到相互隔开的目的。"></a>margin:用于控制元素与元素之间的距离；margin的最基本用途就是控制元素周围空间的间隔，从视觉角度上达到相互隔开的目的。</h3><h3 id="padding-用于控制内容与边框之间的距离；"><a href="#padding-用于控制内容与边框之间的距离；" class="headerlink" title="padding:   用于控制内容与边框之间的距离；"></a>padding:   用于控制内容与边框之间的距离；</h3><h3 id="Border-边框-围绕在内边距和内容外的边框。"><a href="#Border-边框-围绕在内边距和内容外的边框。" class="headerlink" title="Border(边框):     围绕在内边距和内容外的边框。"></a>Border(边框):     围绕在内边距和内容外的边框。</h3><h3 id="Content-内容-盒子的内容，显示文本和图像。"><a href="#Content-内容-盒子的内容，显示文本和图像。" class="headerlink" title="Content(内容):   盒子的内容，显示文本和图像。"></a>Content(内容):   盒子的内容，显示文本和图像。</h3><pre><code>内容&gt;内填充(padding)&gt;边框(border)&gt;外边距(margin)</code></pre><p><img src="https://i.imgur.com/KUvfWZ7.png" alt=""></p><h1 id="5-浮动"><a href="#5-浮动" class="headerlink" title="5. 浮动"></a>5. 浮动</h1><pre><code>1. 浮动多用于页面大范围布局2. 浮动    - left   往左浮动    - right  往右浮动3. 清除浮动的副作用    1. clear        - left    左边不能有浮动元素        - right   右边不能有浮动元素        - both    两边都不能有浮动元素    2. 常用class        .clearfix:after {            content: &apos;&apos;;            display: block;            clear:both        }</code></pre><h1 id="6-溢出"><a href="#6-溢出" class="headerlink" title="6. 溢出"></a>6. 溢出</h1><pre><code>overflow    - hidden    - scroll    - auto圆形头像的例子</code></pre><h1 id="7-定位"><a href="#7-定位" class="headerlink" title="7. 定位"></a>7. 定位</h1><pre><code>1. 相对定位：相对 标签原来的位置 做的定位    position: relative    left:    top:    bottom:    right:2. 绝对定位：相对 已经定位过的祖先标签 做的定位    多用于页面局部的布局，注意要和定位过的祖先标签配合使用    绝对定位和浮动一样，标签都会脱离文档，别的标签可以占用它的位置3. 固定定位    固定定位相对于 屏幕 固定显示在某个位置    固定定位的元素也是脱离文档的    返回顶部按钮</code></pre><h1 id="2-Blog页面"><a href="#2-Blog页面" class="headerlink" title="2. Blog页面"></a>2. Blog页面</h1><pre><code>1. 先写HTML(HTML是骨架)2. 再写CSS(CSS控制HTML的显示效果)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;CSS属性：&lt;a href=&quot;https://www.cnblogs.com/liwenzhou/p/7999532.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/liwenzhou/p
+      
+    
+    </summary>
+    
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS-给HTML设置样式</title>
@@ -488,26 +514,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>测试</title>
-    <link href="http://yoursite.com/2017/12/02/test/"/>
-    <id>http://yoursite.com/2017/12/02/test/</id>
-    <published>2017-12-02T13:01:24.000Z</published>
-    <updated>2018-10-03T10:28:24.174Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="云服务器" scheme="http://yoursite.com/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="centOS" scheme="http://yoursite.com/tags/centOS/"/>
-    
-      <category term="tomcat" scheme="http://yoursite.com/tags/tomcat/"/>
     
   </entry>
   
