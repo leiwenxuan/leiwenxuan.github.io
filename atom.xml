@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-15T09:18:25.498Z</updated>
+  <updated>2018-10-15T09:19:26.201Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>cssPostion-定位</title>
-    <link href="http://yoursite.com/2018/10/15/cssPostion-%E5%AE%9A%E4%BD%8D/"/>
-    <id>http://yoursite.com/2018/10/15/cssPostion-定位/</id>
-    <published>2018-10-15T09:18:02.000Z</published>
-    <updated>2018-10-15T09:18:25.498Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><pre><code>static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等值是不起作用的的。</code></pre><h1 id="relative（相对定位）"><a href="#relative（相对定位）" class="headerlink" title="relative（相对定位）"></a>relative（相对定位）</h1><pre><code>相对定位是相对于该元素在文档流中的原始位置，即以自己原始位置为参照物。有趣的是，即使设定了元素的相对定位以及偏移值，元素还占有着原来的位置，即占据文档流空间。对象遵循正常文档流，但将依据top，right，bottom，left等属性在正常文档流中偏移位置。而其层叠通过z-index属性定义。注意：position：relative的一个主要用法：方便绝对定位元素找到参照物。</code></pre><h1 id="absolute（绝对定位）"><a href="#absolute（绝对定位）" class="headerlink" title="absolute（绝对定位）"></a>absolute（绝对定位）</h1><pre><code>定义：设置为绝对定位的元素框从文档流完全删除，并相对于最近的已定位祖先元素定位，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块（即body元素）。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。重点：如果父级设置了position属性，例如position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。另外，对象脱离正常文档流，使用top，right，bottom，left等属性进行绝对定位。而其层叠通过z-index属性定义。</code></pre><p>fixed（固定）</p><pre><code>fixed：对象脱离正常文档流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性 定义。 注意点： 一个元素若设置了 position:absolute | fixed; 则该元素就不能设置float。这 是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流”。但是 relative 却可以。因为它原本所占的空间仍然占据文档流。在理论上，被设置为fixed的元素会被定位于浏览器窗口的一个指定坐标，不论窗口是否滚动，它都会固定在这个位置。</code></pre><h2 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h2><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;  &lt;meta charset=&quot;UTF-8&quot;&gt;  &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;  &lt;title&gt;返回顶部示例&lt;/title&gt;  &lt;style&gt;    * {      margin: 0;    }    .d1 {      height: 1000px;      background-color: #eeee;    }    .scrollTop {      background-color: darkgrey;      padding: 10px;      text-align: center;      position: fixed;      right: 10px;      bottom: 20px;    }  &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;d1&quot;&gt;111&lt;/div&gt;&lt;div class=&quot;scrollTop&quot;&gt;返回顶部&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><h1 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h1><pre><code>#i2 {  z-index: 999;}设置对象的层叠顺序，数值大的会覆盖在数值小的标签之上。z-index 仅能在定位元素上奏效。 自定义模态框示例</code></pre><h1 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h1><pre><code>用来定义透明效果。取值范围是0~1，0是完全透明，1是完全不透明</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;static&quot;&gt;&lt;a href=&quot;#static&quot; class=&quot;headerlink&quot; title=&quot;static&quot;&gt;&lt;/a&gt;static&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等
-      
-    
-    </summary>
-    
-      <category term="html" scheme="http://yoursite.com/categories/html/"/>
-    
-    
-      <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
-    
-  </entry>
   
   <entry>
     <title>面试真题：</title>
@@ -63,6 +38,31 @@
     
     
       <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cssPostion-定位</title>
+    <link href="http://yoursite.com/2018/10/15/cssPostion-%E5%AE%9A%E4%BD%8D/"/>
+    <id>http://yoursite.com/2018/10/15/cssPostion-定位/</id>
+    <published>2018-10-15T09:18:02.000Z</published>
+    <updated>2018-10-15T09:18:25.498Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><pre><code>static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等值是不起作用的的。</code></pre><h1 id="relative（相对定位）"><a href="#relative（相对定位）" class="headerlink" title="relative（相对定位）"></a>relative（相对定位）</h1><pre><code>相对定位是相对于该元素在文档流中的原始位置，即以自己原始位置为参照物。有趣的是，即使设定了元素的相对定位以及偏移值，元素还占有着原来的位置，即占据文档流空间。对象遵循正常文档流，但将依据top，right，bottom，left等属性在正常文档流中偏移位置。而其层叠通过z-index属性定义。注意：position：relative的一个主要用法：方便绝对定位元素找到参照物。</code></pre><h1 id="absolute（绝对定位）"><a href="#absolute（绝对定位）" class="headerlink" title="absolute（绝对定位）"></a>absolute（绝对定位）</h1><pre><code>定义：设置为绝对定位的元素框从文档流完全删除，并相对于最近的已定位祖先元素定位，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块（即body元素）。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。重点：如果父级设置了position属性，例如position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。另外，对象脱离正常文档流，使用top，right，bottom，left等属性进行绝对定位。而其层叠通过z-index属性定义。</code></pre><p>fixed（固定）</p><pre><code>fixed：对象脱离正常文档流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性 定义。 注意点： 一个元素若设置了 position:absolute | fixed; 则该元素就不能设置float。这 是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流”。但是 relative 却可以。因为它原本所占的空间仍然占据文档流。在理论上，被设置为fixed的元素会被定位于浏览器窗口的一个指定坐标，不论窗口是否滚动，它都会固定在这个位置。</code></pre><h2 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h2><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;  &lt;meta charset=&quot;UTF-8&quot;&gt;  &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;  &lt;title&gt;返回顶部示例&lt;/title&gt;  &lt;style&gt;    * {      margin: 0;    }    .d1 {      height: 1000px;      background-color: #eeee;    }    .scrollTop {      background-color: darkgrey;      padding: 10px;      text-align: center;      position: fixed;      right: 10px;      bottom: 20px;    }  &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;d1&quot;&gt;111&lt;/div&gt;&lt;div class=&quot;scrollTop&quot;&gt;返回顶部&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><h1 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h1><pre><code>#i2 {  z-index: 999;}设置对象的层叠顺序，数值大的会覆盖在数值小的标签之上。z-index 仅能在定位元素上奏效。 自定义模态框示例</code></pre><h1 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h1><pre><code>用来定义透明效果。取值范围是0~1，0是完全透明，1是完全不透明</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;static&quot;&gt;&lt;a href=&quot;#static&quot; class=&quot;headerlink&quot; title=&quot;static&quot;&gt;&lt;/a&gt;static&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等
+      
+    
+    </summary>
+    
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
+    
+    
+      <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
     
   </entry>
   
