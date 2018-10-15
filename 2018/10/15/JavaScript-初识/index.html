@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="网站关键字, key, key1, key2, key3"><title>JavaScript | 雷文轩</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">JavaScript</h1><a id="logo" href="/.">雷文轩</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">JavaScript</h1><div class="post-meta"><a href="/2018/10/15/JavaScript-初识/#comments" class="comment-count"></a><p><span class="date">Oct 15, 2018</span><span><a href="/categories/html/" class="category">html</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>一个完整的 JavaScript 实现是由以下 3 个不同部分组成的：</p>
+<ol>
+<li>核心（ECMAScript） </li>
+<li>文档对象模型（DOM） Document object model (整合js，css，html)</li>
+<li>浏览器对象模型（BOM） Broswer object model（整合js和浏览器）</li>
+</ol>
+<p>##JavaScript内容</p>
+<pre><code>JavaScript 是脚本语言
+JavaScript 是一种轻量级的编程语言。
+
+JavaScript 是可插入 HTML 页面的编程代码。
+
+JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行。
+
+JavaScript 很容易学习。
+</code></pre><h2 id="JavaScript引入方式"><a href="#JavaScript引入方式" class="headerlink" title="JavaScript引入方式"></a>JavaScript引入方式</h2><pre><code>&lt;script&gt;
+  // 在这里写你的JS代码
+&lt;/script&gt;
+----------
+&lt;script src=&quot;myscript.js&quot;&gt;&lt;/script&gt;
+</code></pre><h2 id="JavaScript注释-和C-语言的类似"><a href="#JavaScript注释-和C-语言的类似" class="headerlink" title="JavaScript注释 和C 语言的类似"></a>JavaScript注释 和C 语言的类似</h2><pre><code>// 单行
+/* */ 多行注释
+</code></pre><h1 id="JavaScript-语言基础"><a href="#JavaScript-语言基础" class="headerlink" title="JavaScript 语言基础"></a>JavaScript 语言基础</h1><h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><pre><code>JavaScript的变量名可以使用_，数字，字母，$组成，不能以数字开头。
+声明变量使用 var 变量名; 的格式来进行声明
+</code></pre><h2 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h2><p>JavaScript拥有动态的数据类型</p>
+<h3 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h3><pre><code>var a = 12.34;
+var b = 20;
+var c = 123e5;  // 12300000
+var d = 123e-5;  // 0.00123
+
+常用方法
+parseInt(&quot;123&quot;)  // 返回123
+parseInt(&quot;ABC&quot;)  // 返回NaN,NaN属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。
+parseFloat(&quot;123.456&quot;)  // 返回123.456
+</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><pre><code>var a = &quot;Hello&quot;
+var b = &quot;world;
+var c = a + b; 
+console.log(c);  // 得到Helloworld
+</code></pre><p><img src="https://i.imgur.com/5q1Z6AX.png" alt="字符串常用方法"></p>
+<h4 id="slice-和-substring-区别"><a href="#slice-和-substring-区别" class="headerlink" title="slice 和 substring 区别"></a>slice 和 substring 区别</h4><pre><code>string.slice(start, stop)和string.substring(start, stop)：
+两者的相同点：
+如果start等于end，返回空字符串
+如果stop参数省略，则取到字符串末
+如果某个参数超过string的长度，这个参数会被替换为string的长度
+
+substirng()的特点：
+如果 start &gt; stop ，start和stop将被交换
+如果参数是负数或者不是数字，将会被0替换
+
+silce()的特点：
+如果 start &gt; stop 不会交换两者
+如果start小于0，则切割从字符串末尾往前数的第abs(start)个的字符开始(包括该位置的字符)
+如果stop小于0，则切割在从字符串末尾往前数的第abs(stop)个字符结束(不包含该位置字符    
+</code></pre><h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><pre><code>区别于Python，true和false都是小写。
+
+var a = true;
+var b = false;
+&quot;&quot;(空字符串)、0、null、undefined、NaN都是false。
+</code></pre><h3 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h3><pre><code>null表示值是空，一般在需要指定或清空一个变量时才会使用，如 name=null;
+undefined表示当声明一个变量但未初始化时，该变量的默认值是undefined。还有就是函数无明确的返回值时，返回的也是undefined。
+null表示变量的值是空，undefined则表示只声明了变量，但还没有赋值
+</code></pre><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><pre><code>和C语言类似
+</code></pre><p><img src="https://i.imgur.com/tZfv74M.png" alt=""></p>
+<h5 id="关于sort-需要注意："><a href="#关于sort-需要注意：" class="headerlink" title="关于sort()需要注意："></a>关于sort()需要注意：</h5><pre><code>如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。
+
+如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。
+</code></pre><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><pre><code>和C语言类似
+算数运算符
++ - * / % ++ --
+比较运算符
+&gt; &gt;= &lt; &lt;= != == === !==
+逻辑运算符
+|| &amp;&amp; ！
+赋值运算符
+= += -= *= /=
+</code></pre><h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><pre><code>和C语言类似 
+基本语法 写法都类似
+</code></pre><h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><pre><code>a = x&gt;y ? x:y  如果x &gt; y a = x  否则 a= y
+</code></pre><h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><pre><code>和Python类似， 定义的方法不同
+
+function 函数名（） {
+
+    具体代码    
+}
+{} 扩起来的代表代码段
+</code></pre><h4 id="箭头函数-与Python匿名函数一致"><a href="#箭头函数-与Python匿名函数一致" class="headerlink" title="箭头函数 与Python匿名函数一致"></a>箭头函数 与Python匿名函数一致</h4><pre><code>var f = v =&gt; v;
+// 等同于
+var f = function(v){
+  return v;
+}
+
+var f = () =&gt; 5;
+// 等同于
+var f = function(){return 5};
+
+var sum = (num1, num2) =&gt; num1 + num2;
+// 等同于
+var sum = function(num1, num2){
+  return num1 + num2;
+}
+</code></pre><h3 id="函数中的arguments参数"><a href="#函数中的arguments参数" class="headerlink" title="函数中的arguments参数"></a>函数中的arguments参数</h3><pre><code>function add(a,b){
+  console.log(a+b);
+  console.log(arguments.length) # 计算传进的参数个数
+}
+
+add(1,2)
+</code></pre><h3 id="函数的全局变量和局部变量"><a href="#函数的全局变量和局部变量" class="headerlink" title="函数的全局变量和局部变量"></a>函数的全局变量和局部变量</h3><pre><code>局部变量：
+
+在JavaScript函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它（该变量的作用域是函数内部）。只要函数运行完毕，本地变量就会被删除。
+
+全局变量：
+
+在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
+
+变量生存周期：
+
+JavaScript变量的生命期从它们被声明的时间开始。
+
+局部变量会在函数运行以后被删除。
+
+全局变量会在页面关闭后被删除。
+</code></pre><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>首先在函数内部查找变量，找不到则到外层函数查找，逐步找到最外层</p>
+<h4 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h4><pre><code>#例子：1
+var city = &quot;BeiJing&quot;;
+function f() {
+  var city = &quot;ShangHai&quot;;
+  function inner(){
+    var city = &quot;ShenZhen&quot;;
+    console.log(city);
+  }
+  inner(); 
+}
+
+f();  //输出结果是？
+shezhen
+# 例子：2
+var city = &quot;BeiJing&quot;;
+function Bar() {
+  console.log(city);
+}
+function f() {
+  var city = &quot;ShangHai&quot;;
+  return Bar;
+}
+var ret = f();
+ret();  // 打印结果是？
+# 例子： 3
+
+var city = &quot;BeiJing&quot;;
+function f(){
+    var city = &quot;ShangHai&quot;;
+    function inner(){
+        console.log(city);
+    }
+    return inner;
+}
+var ret = f();
+ret();
+此处形成闭包， 引用了外层函数的变量并且保存住
+</code></pre><h2 id="词云分析"><a href="#词云分析" class="headerlink" title="词云分析"></a>词云分析</h2><p>JavaScript中在调用函数的那一瞬间，会先进行词法分析。</p>
+<p>词法分析的过程：</p>
+<p>当函数调用的前一瞬间，会先形成一个激活对象：Avtive Object（AO），并会分析以下3个方面：</p>
+<p>1:函数参数，如果有，则将此参数赋值给AO，且值为undefined。如果没有，则不做任何操作。<br>2:函数局部变量，如果AO上有同名的值，则不做任何操作。如果没有，则将此变量赋值给AO，并且值为undefined。<br>3:函数声明，如果AO上有，则会将AO上的对象覆盖。如果没有，则不做任何操作。</p>
+<p>函数内部无论是使用参数还是使用局部变量都到AO上找。</p>
+<h3 id="几个例子-1"><a href="#几个例子-1" class="headerlink" title="几个例子"></a>几个例子</h3><pre><code># 例子： 1
+var age = 18;
+function foo(){
+  console.log(age);
+  var age = 22;
+  console.log(age);
+}
+foo();  // 问：执行foo()之后的结果是？
+结果： 
+    undefined
+    22
+
+# 例子： 2
+
+var age = 18;
+function foo(){
+  console.log(age);
+  var age = 22;
+  console.log(age);
+  function age(){
+    console.log(&quot;呵呵&quot;);
+  }
+  console.log(age);
+}
+foo();  // 执行后的结果是？    
+</code></pre><p><img src="https://i.imgur.com/ywS6EP9.png" alt=""></p>
+<h1 id="内置方法和对象"><a href="#内置方法和对象" class="headerlink" title="内置方法和对象"></a>内置方法和对象</h1><h2 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h2><p><img src="https://i.imgur.com/pXtbpDx.png" alt=""></p>
+<p><img src="https://i.imgur.com/v1cMQ3C.png" alt=""></p>
+</div><div class="tags"><a href="/tags/JavaScript/">-JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/10/15/cssPostion-定位/" class="next">cssPostion-定位</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript引入方式"><span class="toc-text">JavaScript引入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript注释-和C-语言的类似"><span class="toc-text">JavaScript注释 和C 语言的类似</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-语言基础"><span class="toc-text">JavaScript 语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量命名"><span class="toc-text">变量命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript数据类型"><span class="toc-text">JavaScript数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数值"><span class="toc-text">数值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#slice-和-substring-区别"><span class="toc-text">slice 和 substring 区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null和undefined"><span class="toc-text">null和undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#关于sort-需要注意："><span class="toc-text">关于sort()需要注意：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制"><span class="toc-text">流程控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三元运算符"><span class="toc-text">三元运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数定义"><span class="toc-text">函数定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头函数-与Python匿名函数一致"><span class="toc-text">箭头函数 与Python匿名函数一致</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数中的arguments参数"><span class="toc-text">函数中的arguments参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的全局变量和局部变量"><span class="toc-text">函数的全局变量和局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#几个例子"><span class="toc-text">几个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#词云分析"><span class="toc-text">词云分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个例子-1"><span class="toc-text">几个例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内置方法和对象"><span class="toc-text">内置方法和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义对象"><span class="toc-text">自定义对象</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/JavaScript-初识/">JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/cssPostion-定位/">cssPostion-定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/15/面试题Python/">面试真题：</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/CSS进阶/">CSS 进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/CSS-给HTML设置样式/">CSS-给HTML设置样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/HTML初识/">HTML初识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/mysql练习 copy/">Mysql 小练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Mysql增删改查/">Mysql增删改查</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/Python_mysql/">PyMysql模块学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/多表结构的创建与分析/">多表结构的创建与分析</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人感想/">个人感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/云服务器/">云服务器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试题Python编程题/">面试题Python编程题</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/珍惜/" style="font-size: 15px;">珍惜</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/css-Postion/" style="font-size: 15px;">css-Postion</a> <a href="/tags/数据操作Python/" style="font-size: 15px;">数据操作Python</a> <a href="/tags/centOS/" style="font-size: 15px;">centOS</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/MySQL练习/" style="font-size: 15px;">MySQL练习</a> <a href="/tags/多表/" style="font-size: 15px;">多表</a> <a href="/tags/Python编程题/" style="font-size: 15px;">Python编程题</a> <a href="/tags/JavaScript/" style="font-size: 15px;">-JavaScript</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/数据操作/" style="font-size: 15px;">数据操作</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Leiwenxuan.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

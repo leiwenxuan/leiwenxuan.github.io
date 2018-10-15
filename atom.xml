@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-15T09:19:26.201Z</updated>
+  <updated>2018-10-15T13:30:18.919Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,27 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>面试真题：</title>
-    <link href="http://yoursite.com/2018/10/15/%E9%9D%A2%E8%AF%95%E9%A2%98Python/"/>
-    <id>http://yoursite.com/2018/10/15/面试题Python/</id>
-    <published>2018-10-15T09:18:02.000Z</published>
-    <updated>2018-10-15T09:19:26.201Z</updated>
+    <title>JavaScript</title>
+    <link href="http://yoursite.com/2018/10/15/JavaScript-%E5%88%9D%E8%AF%86/"/>
+    <id>http://yoursite.com/2018/10/15/JavaScript-初识/</id>
+    <published>2018-10-15T11:23:34.000Z</published>
+    <updated>2018-10-15T13:30:18.919Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7"><a href="#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7" class="headerlink" title="1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]"></a>1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]</h1><p>li = [1, 2, [3, [4, 5, [1, 2, [1, 2]]]], 6, [7, ]]</p><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><pre><code>def func( li ):    # lis = []    if isinstance(li, list):        return [y for x in li for y in func(x)]    else:        return [li]</code></pre><p>print(func(li))</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><pre><code>lis = []def func(li):    for i in li:        if isinstance(i,list):           func(i)        else:            lis.append(i)    return lis</code></pre><p>print(list(func(li)))</p><h1 id="2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7"><a href="#2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7" class="headerlink" title="2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]"></a>2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]</h1><h2 id="生成器-一"><a href="#生成器-一" class="headerlink" title="生成器 一"></a>生成器 一</h2><pre><code>def func3(li):    for i in li:        if isinstance(i, list):            for j in func3(i):                yield j        else:            yield iprint(list(func3(li)))</code></pre><h2 id="生产器yield-from"><a href="#生产器yield-from" class="headerlink" title="生产器yield from"></a>生产器yield from</h2><pre><code>def func4(li):    for i in li:        if isinstance(i, list):            yield from func4(i)        else:            yield iprint(list(func4(li)))</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>一个完整的 JavaScript 实现是由以下 3 个不同部分组成的：</p><ol><li>核心（ECMAScript） </li><li>文档对象模型（DOM） Document object model (整合js，css，html)</li><li>浏览器对象模型（BOM） Broswer object model（整合js和浏览器）</li></ol><p>##JavaScript内容</p><pre><code>JavaScript 是脚本语言JavaScript 是一种轻量级的编程语言。JavaScript 是可插入 HTML 页面的编程代码。JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行。JavaScript 很容易学习。</code></pre><h2 id="JavaScript引入方式"><a href="#JavaScript引入方式" class="headerlink" title="JavaScript引入方式"></a>JavaScript引入方式</h2><pre><code>&lt;script&gt;  // 在这里写你的JS代码&lt;/script&gt;----------&lt;script src=&quot;myscript.js&quot;&gt;&lt;/script&gt;</code></pre><h2 id="JavaScript注释-和C-语言的类似"><a href="#JavaScript注释-和C-语言的类似" class="headerlink" title="JavaScript注释 和C 语言的类似"></a>JavaScript注释 和C 语言的类似</h2><pre><code>// 单行/* */ 多行注释</code></pre><h1 id="JavaScript-语言基础"><a href="#JavaScript-语言基础" class="headerlink" title="JavaScript 语言基础"></a>JavaScript 语言基础</h1><h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><pre><code>JavaScript的变量名可以使用_，数字，字母，$组成，不能以数字开头。声明变量使用 var 变量名; 的格式来进行声明</code></pre><h2 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h2><p>JavaScript拥有动态的数据类型</p><h3 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h3><pre><code>var a = 12.34;var b = 20;var c = 123e5;  // 12300000var d = 123e-5;  // 0.00123常用方法parseInt(&quot;123&quot;)  // 返回123parseInt(&quot;ABC&quot;)  // 返回NaN,NaN属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。parseFloat(&quot;123.456&quot;)  // 返回123.456</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><pre><code>var a = &quot;Hello&quot;var b = &quot;world;var c = a + b; console.log(c);  // 得到Helloworld</code></pre><p><img src="https://i.imgur.com/5q1Z6AX.png" alt="字符串常用方法"></p><h4 id="slice-和-substring-区别"><a href="#slice-和-substring-区别" class="headerlink" title="slice 和 substring 区别"></a>slice 和 substring 区别</h4><pre><code>string.slice(start, stop)和string.substring(start, stop)：两者的相同点：如果start等于end，返回空字符串如果stop参数省略，则取到字符串末如果某个参数超过string的长度，这个参数会被替换为string的长度substirng()的特点：如果 start &gt; stop ，start和stop将被交换如果参数是负数或者不是数字，将会被0替换silce()的特点：如果 start &gt; stop 不会交换两者如果start小于0，则切割从字符串末尾往前数的第abs(start)个的字符开始(包括该位置的字符)如果stop小于0，则切割在从字符串末尾往前数的第abs(stop)个字符结束(不包含该位置字符    </code></pre><h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><pre><code>区别于Python，true和false都是小写。var a = true;var b = false;&quot;&quot;(空字符串)、0、null、undefined、NaN都是false。</code></pre><h3 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h3><pre><code>null表示值是空，一般在需要指定或清空一个变量时才会使用，如 name=null;undefined表示当声明一个变量但未初始化时，该变量的默认值是undefined。还有就是函数无明确的返回值时，返回的也是undefined。null表示变量的值是空，undefined则表示只声明了变量，但还没有赋值</code></pre><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><pre><code>和C语言类似</code></pre><p><img src="https://i.imgur.com/tZfv74M.png" alt=""></p><h5 id="关于sort-需要注意："><a href="#关于sort-需要注意：" class="headerlink" title="关于sort()需要注意："></a>关于sort()需要注意：</h5><pre><code>如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。</code></pre><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><pre><code>和C语言类似算数运算符+ - * / % ++ --比较运算符&gt; &gt;= &lt; &lt;= != == === !==逻辑运算符|| &amp;&amp; ！赋值运算符= += -= *= /=</code></pre><h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><pre><code>和C语言类似 基本语法 写法都类似</code></pre><h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><pre><code>a = x&gt;y ? x:y  如果x &gt; y a = x  否则 a= y</code></pre><h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><pre><code>和Python类似， 定义的方法不同function 函数名（） {    具体代码    }{} 扩起来的代表代码段</code></pre><h4 id="箭头函数-与Python匿名函数一致"><a href="#箭头函数-与Python匿名函数一致" class="headerlink" title="箭头函数 与Python匿名函数一致"></a>箭头函数 与Python匿名函数一致</h4><pre><code>var f = v =&gt; v;// 等同于var f = function(v){  return v;}var f = () =&gt; 5;// 等同于var f = function(){return 5};var sum = (num1, num2) =&gt; num1 + num2;// 等同于var sum = function(num1, num2){  return num1 + num2;}</code></pre><h3 id="函数中的arguments参数"><a href="#函数中的arguments参数" class="headerlink" title="函数中的arguments参数"></a>函数中的arguments参数</h3><pre><code>function add(a,b){  console.log(a+b);  console.log(arguments.length) # 计算传进的参数个数}add(1,2)</code></pre><h3 id="函数的全局变量和局部变量"><a href="#函数的全局变量和局部变量" class="headerlink" title="函数的全局变量和局部变量"></a>函数的全局变量和局部变量</h3><pre><code>局部变量：在JavaScript函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它（该变量的作用域是函数内部）。只要函数运行完毕，本地变量就会被删除。全局变量：在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。变量生存周期：JavaScript变量的生命期从它们被声明的时间开始。局部变量会在函数运行以后被删除。全局变量会在页面关闭后被删除。</code></pre><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>首先在函数内部查找变量，找不到则到外层函数查找，逐步找到最外层</p><h4 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h4><pre><code>#例子：1var city = &quot;BeiJing&quot;;function f() {  var city = &quot;ShangHai&quot;;  function inner(){    var city = &quot;ShenZhen&quot;;    console.log(city);  }  inner(); }f();  //输出结果是？shezhen# 例子：2var city = &quot;BeiJing&quot;;function Bar() {  console.log(city);}function f() {  var city = &quot;ShangHai&quot;;  return Bar;}var ret = f();ret();  // 打印结果是？# 例子： 3var city = &quot;BeiJing&quot;;function f(){    var city = &quot;ShangHai&quot;;    function inner(){        console.log(city);    }    return inner;}var ret = f();ret();此处形成闭包， 引用了外层函数的变量并且保存住</code></pre><h2 id="词云分析"><a href="#词云分析" class="headerlink" title="词云分析"></a>词云分析</h2><p>JavaScript中在调用函数的那一瞬间，会先进行词法分析。</p><p>词法分析的过程：</p><p>当函数调用的前一瞬间，会先形成一个激活对象：Avtive Object（AO），并会分析以下3个方面：</p><p>1:函数参数，如果有，则将此参数赋值给AO，且值为undefined。如果没有，则不做任何操作。<br>2:函数局部变量，如果AO上有同名的值，则不做任何操作。如果没有，则将此变量赋值给AO，并且值为undefined。<br>3:函数声明，如果AO上有，则会将AO上的对象覆盖。如果没有，则不做任何操作。</p><p>函数内部无论是使用参数还是使用局部变量都到AO上找。</p><h3 id="几个例子-1"><a href="#几个例子-1" class="headerlink" title="几个例子"></a>几个例子</h3><pre><code># 例子： 1var age = 18;function foo(){  console.log(age);  var age = 22;  console.log(age);}foo();  // 问：执行foo()之后的结果是？结果：     undefined    22# 例子： 2var age = 18;function foo(){  console.log(age);  var age = 22;  console.log(age);  function age(){    console.log(&quot;呵呵&quot;);  }  console.log(age);}foo();  // 执行后的结果是？    </code></pre><p><img src="https://i.imgur.com/ywS6EP9.png" alt=""></p><h1 id="内置方法和对象"><a href="#内置方法和对象" class="headerlink" title="内置方法和对象"></a>内置方法和对象</h1><h2 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h2><p><img src="https://i.imgur.com/pXtbpDx.png" alt=""></p><p><img src="https://i.imgur.com/v1cMQ3C.png" alt=""></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot;&gt;&lt;a href=&quot;#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot; class=&quot;headerlink&quot; title=&quot;1.
+        &lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;p&gt;一个完整的 JavaScript 实现是由以下 3 个不同部分组成的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;核心（ECMAScript） &lt;/li&gt;
+
       
     
     </summary>
     
-      <category term="面试题Python编程题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
     
     
-      <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+      <category term="-JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
   </entry>
   
@@ -63,6 +66,31 @@
     
     
       <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试真题：</title>
+    <link href="http://yoursite.com/2018/10/15/%E9%9D%A2%E8%AF%95%E9%A2%98Python/"/>
+    <id>http://yoursite.com/2018/10/15/面试题Python/</id>
+    <published>2018-10-15T09:18:02.000Z</published>
+    <updated>2018-10-15T11:13:27.739Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7"><a href="#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7" class="headerlink" title="1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]"></a>1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]</h1><p>li = [1, 2, [3, [4, 5, [1, 2, [1, 2]]]], 6, [7, ]]</p><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><pre><code>def func( li ):    # lis = []    if isinstance(li, list):        return [y for x in li for y in func(x)]    else:        return [li]</code></pre><p>print(func(li))</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><pre><code>lis = []def func(li):    for i in li:        if isinstance(i,list):           func(i)        else:            lis.append(i)    return lis</code></pre><p>print(list(func(li)))</p><h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><pre><code>while lst:if isinstance(lst[0], list):    #这个for循环的作用是把是列表的元素，脱去最外层的列表，把里面的每个元素    #按照它们的索引来插入到原列表中，但最早的列表开头的元素会保留下来    #所以要把索引为index+1的元素删除掉。    for index, i in enumerate(lst[0]):        lst.insert(index, i)    #这句用来理解里面的变化，可以注释掉。    print(lst)    # del lst[index + 1] 也可以用pop或del    lst.pop(index + 1)else:    new_lst.append(lst[0])    lst.pop(0)</code></pre><h1 id="2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7"><a href="#2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7" class="headerlink" title="2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]"></a>2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]</h1><h2 id="生成器-一"><a href="#生成器-一" class="headerlink" title="生成器 一"></a>生成器 一</h2><pre><code>def func3(li):    for i in li:        if isinstance(i, list):            for j in func3(i):                yield j        else:            yield iprint(list(func3(li)))</code></pre><h2 id="生产器yield-from"><a href="#生产器yield-from" class="headerlink" title="生产器yield from"></a>生产器yield from</h2><pre><code>def func4(li):    for i in li:        if isinstance(i, list):            yield from func4(i)        else:            yield iprint(list(func4(li)))</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot;&gt;&lt;a href=&quot;#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot; class=&quot;headerlink&quot; title=&quot;1.
+      
+    
+    </summary>
+    
+      <category term="面试题Python编程题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+    
+      <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
     
   </entry>
   
@@ -487,31 +515,6 @@
 &lt;p&gt;##1线程锁&lt;/p&gt;
 &lt;p&gt;###1.1GIL&lt;/p&gt;
 &lt;p&gt;###1.2线程之间的数据安全问题&lt;br&gt;    例如：多个线程对同一块数据进行操作；&lt;br&gt;            比如赋值运算， 一个线程那到数据还没有返回数据结果时间片轮转，引起
-      
-    
-    </summary>
-    
-      <category term="python" scheme="http://yoursite.com/categories/python/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络编程</title>
-    <link href="http://yoursite.com/2018/10/02/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/10/02/网络编程/</id>
-    <published>2018-10-02T04:24:38.864Z</published>
-    <updated>2018-10-03T10:34:13.019Z</updated>
-    
-    <content type="html"><![CDATA[<p>##1：软件开发的架构</p><p>###两件程序之间通讯的应用大致可以分为两种：<br>    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用<br>    第二种：比如百度， 知乎，博客园之类</p><p>####c/s架构<br>    即Client 与 Server， 客户端与服务器的端架构</p><p>####b/s架构<br>    Browser 与 Serverm 浏览器与服务端架构</p><p>##IP地址</p><pre><code>1: 网卡 ：身份证 mac地址 计算机在网络上的身份证2: 交换机 ：负责一个网络内的多台机器之间的信息交换3: mac地址 ：16进制的数  全球唯一1: 127.0.0.1 ：本地回环地址 本机的地址2: 0.0.0.0 ： ip地址的、回环地址的所有的用户都能找到你这台机器</code></pre><p>####局域网</p><pre><code># 局域网1: 网关ip    不同局域网之间通信依赖的ip地址2: 子网掩码  判断两个ip地址是否在同一个网段内3：网段# 0.0.0.0 - 255.255.255.255# 局域网的概念# 外网ip 我们谁都能访问# 内网ip 从外部不能访问，只能在内部环境中互相访问# 外网ip永远不会和内网ip冲突？# 0.0.0.0 - 255.255.255.255中间为内网保留了一些字段# 192.168.0.0 - 192.168.255.255# 10.0.0.0 - 10.255.255.255# 172.16.0.0 - 172.31.255.255</code></pre><p>###局域网中两台机器的通信原理</p><h1 id="局域网中两台机器的通信原理"><a href="#局域网中两台机器的通信原理" class="headerlink" title="局域网中两台机器的通信原理"></a>局域网中两台机器的通信原理</h1><pre><code># 交换机# ip地址# ip地址 -arp协议-&gt; mac地址# mac地址 ： 全球唯一# arp协议 ： 广播 和 单播    # 通过ip地址获取mac地址    # 一台机器A发起一个arp请求（只包含ip地址），发送给交换机    # 交换机接收到请求，广播这条消息    # 所有的机器都会接收到这个请求，只有和要寻找ip地址吻合的机器B    # 才会回应交换机的广播，（带着自己的mac地址）    # 交换机通过单播的形式将回复的B的mac地址发送给A# 判断两台机器是不是在同一个局域网内：    # 子网掩码    # A机器的ip地址和A的子网掩码 按位与    # B机器的ip地址和B的子网掩码 按位与    # 得到的结果如果一致 那么说明两台机器是在一个网段内的</code></pre><p>####端口</p><pre><code># 端口的概念 —— 帮助你找到一个应用# 每一个网络服务都会占用计算机上的一个端口# 计算机上的端口范围 0-65535# 在同一时刻 同一台计算机上 不同的网络应用 占用的端口一定是不同的</code></pre><p>##2：OSI 七层模型</p><p>####在7层的基础上简化为5层</p><pre><code># 应用层 http、https ftp smtp# 传输层 TCP、UDP协议  4层路由器， 4层交换机        # 端口 ：找到某一台机器上的具体的网络应用        # tcp 面向连接 可靠 慢 全双工            # 三次握手 建立tcp连接的过程            # 发消息            # 四次挥手 断开tcp连接的过程           # udp 无连接 不可靠 快# 网络层 ip协议  3层交换机 3层路由器# 数据链路层 arp协议 / mac地址 网卡，交换机        arp协议：根据ip地址找mac地址 ----交换机（广播， 单播）# 物理层</code></pre><p>##Tcp 和 Udp</p><h4 id="tcp-面向连接的-可靠的-但是慢"><a href="#tcp-面向连接的-可靠的-但是慢" class="headerlink" title="tcp 面向连接的 可靠的 但是慢"></a>tcp 面向连接的 可靠的 但是慢</h4><pre><code># tcp协议# 两个应用之间要想通信 必须先建立连接# 然后基于连接来通信# 比较重要的文件 邮件的发送 下载安装包#比较可靠的长数据</code></pre><h4 id="udp-无连接的-快-能够发送的信息长度是有限的"><a href="#udp-无连接的-快-能够发送的信息长度是有限的" class="headerlink" title="udp 无连接的 快 能够发送的信息长度是有限的"></a>udp 无连接的 快 能够发送的信息长度是有限的</h4><pre><code># 快 但 不可靠 不能发送过长的数据# 即时通讯类的程序#高并发的短消息</code></pre><p>###tcp和udp 的区别<br>     tcp、udp是通过网络通信的两种方式<br>       tcp 先建立连接再通信</p><pre><code>    # 可靠    # 慢， 流式传输udp 不需要建立连接直接通信    # 快    # 不可靠</code></pre><p>###<strong>TCP协议中的数据传递</strong></p><p>###tcp协议的拆包机制</p><pre><code>当发送端缓冲区的长度大于网卡的MTU时，tcp会将这次发送的数据拆成几个数据包发送出去。 MTU是Maximum Transmission Unit的缩写。意思是网络上传送的最大数据包。MTU的单位是字节。 大部分网络设备的MTU都是1500。如果本机的MTU比网关的MTU大，大的数据包就会被拆开来传送，这样会产生很多数据包碎片，增加丢包率，降低网络速度。</code></pre><p>###面向流的通信特点和Nagle算法</p><pre><code>TCP（transport control protocol，传输控制协议）是面向连接的，面向流的，提供高可靠性服务。收发两端（客户端和服务器端）都要有一一成对的socket，因此，发送端为了将多个发往接收端的包，更有效的发到对方，使用了优化方法（Nagle算法），将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。这样，接收端，就难于分辨出来了，必须提供科学的拆包机制。 即面向流的通信是无消息保护边界的。 对于空消息：tcp是基于数据流的，于是收发的消息不能为空，这就需要在客户端和服务端都添加空消息的处理机制，防止程序卡住，而udp是基于数据报的，即便是你输入的是空内容（直接回车），也可以被发送，udp协议会帮你封装上消息头发送过去。 可靠黏包的tcp协议：tcp的协议数据不会丢，没有收完包，下次接收，会继续上次继续接收，己端总是在收到ack时才会清除缓冲区内容。数据是可靠的，但是会粘包。</code></pre><p>###一个简单的tcp： server 和 client</p><p>####sever<br>    from socket import *<br>    ip_port = (‘127.0.0.1’, 9514)</p><pre><code>sk = socket(AF_INET, SOCK_STREAM)sk.bind(ip_port)sk.listen()sk_cl, addr = sk.accept()data1 = sk_cl.recv(10)data2 = sk_cl.recv(10)print(&apos;-----&gt;&apos;, data1.decode(&apos;utf-8&apos;))print(&apos;-----&gt;&apos;, data2.decode(&apos;utf-8&apos;))sk_cl.close()</code></pre><p>####client<br>    from socket import *<br>    ip_port = (‘127.0.0.1’, 9514)</p><pre><code>sk = socket(AF_INET, SOCK_STREAM)sk.connect(ip_port)sk.send(b&apos;my name is leiwenxuan&apos;)sk.send(b&apos;nsdfasfdsf&apos;)</code></pre><p>####udp的简单程序</p><p>###sever<br>    import socket<br>    sk = socket.socket(type=socket.SOCK_DGRAM)</p><pre><code>sk.bind((&apos;127.0.0.1&apos;, 9000))while 1:    msg,addr = sk.recvfrom(1024)    print(msg.decode(&apos;utf-8&apos;), addr)    # sk.sendto(&apos;正在发送...&apos;.encode(&apos;utf-8&apos;), addr)    inp = input(&apos;input :&apos;)</code></pre><p>###client<br>    import socket</p><pre><code>sk = socket.socket(type=socket.SOCK_DGRAM)sk.bind((&apos;127.0.0.1&apos;, 9001))while 1:    # sk.sendto(&apos;正在发送...&apos;.encode(&apos;utf-8&apos;), (&apos;127.0.0.1&apos;, 9000))    inp = input(&apos;input:&apos;)    sk.sendto(inp.encode(&apos;utf-8&apos;),(&apos;127.0.0.1&apos;, 9000) )    msg, addr = sk.recvfrom(1024)    print(msg.decode(&apos;utf-8&apos;), addr[1])</code></pre><p>##一个重要的黏包处理</p><p>###server<br>    import json, struct<br>    ‘’’传输一个简单的文件’’’<br>    import os<br>    from socket import *<br>    path_name = r’G:\python笔记\Pythonjing\day31\video\1.内容回顾和作业讲解.mp4’<br>    path_name = os.path.realpath(path_name)<br>    size = str(os.path.getsize(path_name))</p><pre><code>ip_port = (&apos;127.0.0.1&apos;, 9514)sk = socket(AF_INET, SOCK_STREAM)sk.bind(ip_port)sk.listen()sk_cl, addr = sk.accept()sk_cl.send(size.encode(&apos;utf-8&apos;))with open(path_name, &apos;rb&apos;) as f:    while 1:        data = f.read(2048)        pack_num = struct.pack(&apos;i&apos;, len(data))        sk_cl.send(pack_num)        sk_cl.send(data)        if not data:            pack_num = struct.pack(&apos;i&apos;, len(&apos;&apos;))            sk_cl.send(pack_num)            print(len(data))            break</code></pre><p>##client<br>    from socket import *<br>    import struct<br>    import sys</p><pre><code>def processBar(num, total):    &apos;&apos;&apos;进度条&apos;&apos;&apos;    rate = num / total    rate_num = int(rate * 100)    if rate_num == 100:        r = &apos;\r%s&gt;%d%%\n&apos; % (&apos;|&apos; * rate_num, rate_num,)    else:        r = &apos;\r%s&gt;%d%%&apos; % (&apos;|&apos; * rate_num, rate_num,)    sys.stdout.write(r)    sys.stdout.fluship_port = (&apos;127.0.0.1&apos;, 9514)sk = socket(AF_INET, SOCK_STREAM)sk.connect(ip_port)size = int(sk.recv(1024).decode(&apos;utf-8&apos;))# processBar(2048, size)num_size = 0with open(&apos;lw.mp4&apos;,&apos;wb&apos;) as f:    while 1:        pack_num = sk.recv(4)        num = struct.unpack(&apos;i&apos;, pack_num)[0]        # print(num)        if not num:            break        ret = sk.recv(num)        f.write(ret)        num_size += num        processBar(num_size, size)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##1：软件开发的架构&lt;/p&gt;
-&lt;p&gt;###两件程序之间通讯的应用大致可以分为两种：&lt;br&gt;    第一种：qq. 微信，网盘，优酷 这一类是属于需要安装的桌面应用&lt;br&gt;    第二种：比如百度， 知乎，博客园之类&lt;/p&gt;
-&lt;p&gt;####c/s架构&lt;br&gt;    即Cli
       
     
     </summary>
