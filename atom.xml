@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-15T13:30:18.919Z</updated>
+  <updated>2018-10-16T15:23:14.995Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cssPostion-定位</title>
+    <link href="http://yoursite.com/2018/10/16/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E4%B9%8BBOM%E5%92%8CDOM/"/>
+    <id>http://yoursite.com/2018/10/16/前端基础之BOM和DOM/</id>
+    <published>2018-10-16T06:53:05.000Z</published>
+    <updated>2018-10-16T15:23:14.995Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript分为-ECMAScript，DOM，BOM。"><a href="#JavaScript分为-ECMAScript，DOM，BOM。" class="headerlink" title="JavaScript分为 ECMAScript，DOM，BOM。"></a>JavaScript分为 ECMAScript，DOM，BOM。</h1><pre><code>BOM（Browser Object Model）是指浏览器对象模型，它使 JavaScript 有能力与浏览器进行“对话”。DOM （Document Object Model）是指文档对象模型，通过它，可以访问HTML文档的所有元素</code></pre><h1 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h1><p>所有的浏览器都支持window 对象， 它表示浏览器窗口。<br>如果文档包含框架（frame 或者iframe 标签），浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 对象。<br>*没有应用于 window 对象的公开标准，不过所有浏览器都支持该对象。<br>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。</p><p>全局变量是 window 对象的属性。全局函数是 window 对象的方法。</p><p><img src="https://i.imgur.com/QqF3Ubk.png" alt=""></p><h2 id="Window-的子标签"><a href="#Window-的子标签" class="headerlink" title="Window 的子标签"></a>Window 的子标签</h2><h3 id="navigator-对象"><a href="#navigator-对象" class="headerlink" title="navigator 对象"></a>navigator 对象</h3><p>浏览器对象， 通过这个对象可以判定用户所有使用的浏览器，包含浏览器的信息。</p><p><img src="https://i.imgur.com/4vXxs4H.png" alt=""></p><h3 id="screen-对象"><a href="#screen-对象" class="headerlink" title="screen 对象"></a>screen 对象</h3><p><img src="https://i.imgur.com/0WvbYcY.png" alt=""></p><h3 id="location-对象"><a href="#location-对象" class="headerlink" title="location 对象"></a>location 对象</h3><pre><code>location.href  获取URLlocation.href=&quot;URL&quot; // 跳转到指定页面location.reload() 重新加载页面</code></pre><h3 id="弹框"><a href="#弹框" class="headerlink" title="弹框"></a>弹框</h3><p>JavaScript 中创建三种：警告框， 确认框， 提示框</p><h4 id="警告框"><a href="#警告框" class="headerlink" title="警告框"></a>警告框</h4><pre><code>alert（&quot;字符串&quot;）</code></pre><h4 id="确认框"><a href="#确认框" class="headerlink" title="确认框"></a>确认框</h4><p><img src="https://i.imgur.com/JPC92Pw.png" alt=""></p><h4 id="提示框"><a href="#提示框" class="headerlink" title="提示框"></a>提示框</h4><p><img src="https://i.imgur.com/JhEdKuY.png" alt=""></p><h3 id="计时相关"><a href="#计时相关" class="headerlink" title="计时相关"></a>计时相关</h3><h4 id="setTimeout-和clearTimeout"><a href="#setTimeout-和clearTimeout" class="headerlink" title="setTimeout() 和clearTimeout()"></a>setTimeout() 和clearTimeout()</h4><p><strong>setTimeout: 返回进程id</strong><br><img src="https://i.imgur.com/3k1EqPN.png" alt=""></p><pre><code>clearTimeout() 清除setTimeout()设置</code></pre><h4 id="setInterval-和-clearInterval"><a href="#setInterval-和-clearInterval" class="headerlink" title="setInterval()  和 clearInterval()"></a>setInterval()  和 clearInterval()</h4><p><strong>setInterval ： 返回id</strong><br>    setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。</p><pre><code>setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数</code></pre><h1 id="Dom"><a href="#Dom" class="headerlink" title="Dom"></a>Dom</h1><p>html Dom 树</p><p><img src="https://i.imgur.com/AsjL0H7.png" alt=""></p><p><img src="https://i.imgur.com/VPMKhXP.png" alt=""></p><p><img src="https://i.imgur.com/RPFpbI3.png" alt=""></p><h2 id="查找标签"><a href="#查找标签" class="headerlink" title="查找标签"></a>查找标签</h2><h3 id="直接查找"><a href="#直接查找" class="headerlink" title="直接查找"></a>直接查找</h3><pre><code>document.getElementById           根据ID获取一个标签document.getElementsByClassName   根据class属性获取document.getElementsByTagName     根据标签名获取标签合集</code></pre><h3 id="间接查找"><a href="#间接查找" class="headerlink" title="间接查找"></a>间接查找</h3><p><img src="https://i.imgur.com/tpQ2aui.png" alt=""></p><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><p>var divEle = document.createElement(“div”);</p><h3 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h3><pre><code>语法：追加一个子节点（作为最后的子节点）somenode.appendChild(newnode)；把增加的节点放到某个节点的前边。somenode.insertBefore(newnode,某个节点);</code></pre><p><img src="https://i.imgur.com/NL4XmZS.png" alt=""></p><h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><pre><code>语法：获得要删除的元素，通过父元素调用该方法删除。somenode.removeChild(要删除的节点)</code></pre><h3 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h3><pre><code>somenode.replaceChild(newnode, 某个节点);</code></pre><h3 id="属性节点"><a href="#属性节点" class="headerlink" title="属性节点"></a>属性节点</h3><p>获取文本节点的值</p><pre><code>var divEle = document.getElementById(&quot;d1&quot;)divEle.innerTextdivEle.innerHTML// 自带的属性还可以直接.属性名来获取和设置imgEle.srcimgEle.src=&quot;...&quot;</code></pre><p><img src="https://i.imgur.com/f5l5YW0.png" alt="">    </p><h3 id="获取值操作"><a href="#获取值操作" class="headerlink" title="获取值操作"></a>获取值操作</h3><p>语法：</p><p>elementNode.value</p><p>适用于以下标签：</p><p>.input<br>.select<br>.textarea</p><p><img src="https://i.imgur.com/w1ljWCZ.png" alt=""></p><h3 id="获取class的操作"><a href="#获取class的操作" class="headerlink" title="获取class的操作"></a>获取class的操作</h3><pre><code>className  获取所有样式类名(字符串)classList.remove(cls)  删除指定类classList.add(cls)  添加类classList.contains(cls)  存在返回true，否则返回falseclassList.toggle(cls)  存在就删除，否则添加</code></pre><h3 id="指定css操作"><a href="#指定css操作" class="headerlink" title="指定css操作"></a>指定css操作</h3><p>obj.style.backgroundColor=”red”<br>JS操作CSS属性的规律：<br><img src="https://i.imgur.com/KYf5J7Y.png" alt=""><br>1.对于没有中横线的CSS属性一般直接使用style.属性名即可。如：</p><pre><code>obj.style.marginobj.style.widthobj.style.leftobj.style.position</code></pre><p>2.对含有中横线的CSS属性，将中横线后面的第一个字母换成大写即可。如：</p><pre><code>obj.style.marginTopobj.style.borderLeftWidthobj.style.zIndexobj.style.fontFamily</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;JavaScript分为-ECMAScript，DOM，BOM。&quot;&gt;&lt;a href=&quot;#JavaScript分为-ECMAScript，DOM，BOM。&quot; class=&quot;headerlink&quot; title=&quot;JavaScript分为 ECMAScript，DOM，
+      
+    
+    </summary>
+    
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
+    
+    
+      <category term="JavaScript-DOM，BOM。" scheme="http://yoursite.com/tags/JavaScript-DOM%EF%BC%8CBOM%E3%80%82/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript</title>
@@ -45,31 +70,6 @@
   </entry>
   
   <entry>
-    <title>面试真题：</title>
-    <link href="http://yoursite.com/2018/10/15/%E9%9D%A2%E8%AF%95%E9%A2%98Python/"/>
-    <id>http://yoursite.com/2018/10/15/面试题Python/</id>
-    <published>2018-10-15T09:18:02.000Z</published>
-    <updated>2018-10-15T11:13:27.739Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7"><a href="#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7" class="headerlink" title="1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]"></a>1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]</h1><p>li = [1, 2, [3, [4, 5, [1, 2, [1, 2]]]], 6, [7, ]]</p><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><pre><code>def func( li ):    # lis = []    if isinstance(li, list):        return [y for x in li for y in func(x)]    else:        return [li]</code></pre><p>print(func(li))</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><pre><code>lis = []def func(li):    for i in li:        if isinstance(i,list):           func(i)        else:            lis.append(i)    return lis</code></pre><p>print(list(func(li)))</p><h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><pre><code>while lst:if isinstance(lst[0], list):    #这个for循环的作用是把是列表的元素，脱去最外层的列表，把里面的每个元素    #按照它们的索引来插入到原列表中，但最早的列表开头的元素会保留下来    #所以要把索引为index+1的元素删除掉。    for index, i in enumerate(lst[0]):        lst.insert(index, i)    #这句用来理解里面的变化，可以注释掉。    print(lst)    # del lst[index + 1] 也可以用pop或del    lst.pop(index + 1)else:    new_lst.append(lst[0])    lst.pop(0)</code></pre><h1 id="2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7"><a href="#2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7" class="headerlink" title="2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]"></a>2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]</h1><h2 id="生成器-一"><a href="#生成器-一" class="headerlink" title="生成器 一"></a>生成器 一</h2><pre><code>def func3(li):    for i in li:        if isinstance(i, list):            for j in func3(i):                yield j        else:            yield iprint(list(func3(li)))</code></pre><h2 id="生产器yield-from"><a href="#生产器yield-from" class="headerlink" title="生产器yield from"></a>生产器yield from</h2><pre><code>def func4(li):    for i in li:        if isinstance(i, list):            yield from func4(i)        else:            yield iprint(list(func4(li)))</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot;&gt;&lt;a href=&quot;#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot; class=&quot;headerlink&quot; title=&quot;1.
-      
-    
-    </summary>
-    
-      <category term="面试题Python编程题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-    
-      <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>cssPostion-定位</title>
     <link href="http://yoursite.com/2018/10/15/cssPostion-%E5%AE%9A%E4%BD%8D/"/>
     <id>http://yoursite.com/2018/10/15/cssPostion-定位/</id>
@@ -91,6 +91,31 @@
     
     
       <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试真题：</title>
+    <link href="http://yoursite.com/2018/10/15/%E9%9D%A2%E8%AF%95%E9%A2%98Python/"/>
+    <id>http://yoursite.com/2018/10/15/面试题Python/</id>
+    <published>2018-10-15T09:18:02.000Z</published>
+    <updated>2018-10-15T11:13:27.739Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7"><a href="#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7" class="headerlink" title="1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]"></a>1. 编写函数,实现功能：将[1,2,[3,[4,5]],6,[7,]] 转换成[1,2,3,4,5,6,7]</h1><p>li = [1, 2, [3, [4, 5, [1, 2, [1, 2]]]], 6, [7, ]]</p><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><pre><code>def func( li ):    # lis = []    if isinstance(li, list):        return [y for x in li for y in func(x)]    else:        return [li]</code></pre><p>print(func(li))</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><pre><code>lis = []def func(li):    for i in li:        if isinstance(i,list):           func(i)        else:            lis.append(i)    return lis</code></pre><p>print(list(func(li)))</p><h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><pre><code>while lst:if isinstance(lst[0], list):    #这个for循环的作用是把是列表的元素，脱去最外层的列表，把里面的每个元素    #按照它们的索引来插入到原列表中，但最早的列表开头的元素会保留下来    #所以要把索引为index+1的元素删除掉。    for index, i in enumerate(lst[0]):        lst.insert(index, i)    #这句用来理解里面的变化，可以注释掉。    print(lst)    # del lst[index + 1] 也可以用pop或del    lst.pop(index + 1)else:    new_lst.append(lst[0])    lst.pop(0)</code></pre><h1 id="2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7"><a href="#2-1-2-3-4-5-6-7-用生成器将其生成-1-2-3-4-5-6-7" class="headerlink" title="2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]"></a>2. [1,2,[3,[4,5]],6,[7,]]  用生成器将其生成[1,2,3,4,5,6,7]</h1><h2 id="生成器-一"><a href="#生成器-一" class="headerlink" title="生成器 一"></a>生成器 一</h2><pre><code>def func3(li):    for i in li:        if isinstance(i, list):            for j in func3(i):                yield j        else:            yield iprint(list(func3(li)))</code></pre><h2 id="生产器yield-from"><a href="#生产器yield-from" class="headerlink" title="生产器yield from"></a>生产器yield from</h2><pre><code>def func4(li):    for i in li:        if isinstance(i, list):            yield from func4(i)        else:            yield iprint(list(func4(li)))</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot;&gt;&lt;a href=&quot;#1-编写函数-实现功能：将-1-2-3-4-5-6-7-转换成-1-2-3-4-5-6-7&quot; class=&quot;headerlink&quot; title=&quot;1.
+      
+    
+    </summary>
+    
+      <category term="面试题Python编程题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+    
+      <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
     
   </entry>
   
@@ -490,31 +515,6 @@
       
       
         &lt;h2 id=&quot;创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。&quot;&gt;&lt;a href=&quot;#创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。&quot; class=&quot;headerlink&quot; title
-      
-    
-    </summary>
-    
-      <category term="python" scheme="http://yoursite.com/categories/python/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>异常处理</title>
-    <link href="http://yoursite.com/2018/10/02/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
-    <id>http://yoursite.com/2018/10/02/异常处理/</id>
-    <published>2018-10-02T04:24:38.954Z</published>
-    <updated>2018-10-03T10:32:13.985Z</updated>
-    
-    <content type="html"><![CDATA[<p>##1：初始异常</p><p>###即便是放在try语句中的内容，在遇到报错之后也会中断这段语句的执行</p><p>####1.1 类型异常<br>    l = [‘登录’, ‘注册’]<br>    try:<br>        num = int(input(‘input :’)) #输入：非数字报错 invalid literal for int() with base 10: ‘j’<br>    except ValueError:<br>        print(‘异常：num’)</p><p>####1.2列表索引异常<br>    try:<br>        num = int(input(‘input:’))<br>        print(l[num -1]) #输入数字大于2 IndexError: list index out of range<br>    except IndexError:<br>        print(‘异常：索引超标!’)</p><p>####1.3多分支异常<br>    try:<br>        num = int(input(‘input: ‘))<br>        print(l[num-1])<br>    except IndexError:<br>        print(‘索引越界！’)<br>    except ValueError:<br>        print(‘类型有误！’)</p><p>####1.4多异常<br>    try:<br>           num = int(input(‘input:’))<br>          print(l[num -1])<br>    except (ValueError, IndexError):<br>          print(‘报错！’)</p><p>####1.5万能异常</p><pre><code>try:    l = []    # l[3]    open(&apos;aaa&apos;)except Exception:    print(&apos;异常！&apos;)</code></pre><p>####1.6 as 异常<br>    try:<br>        l[3] #list index out of range<br>        name #name ‘name’ is not defined<br>    except Exception as e:<br>        print(e) #抛出异常的内容</p><p>####1.7 多异常加万能异常<br>    try:<br>        num = int(input(‘input :’))<br>        print(l[num -1])<br>    except (ValueError, IndexError):<br>        print(‘异常！’) #持性了这里下面的将不在执行<br>    except Exception as e:<br>        print(e)</p><p>##2：异常的其他处理机制</p><p>####2.1 else 机制<br>    try:<br>        print(‘My name is Dan’)<br>    except ValueError:<br>        print(‘name is leiwenxuan’)<br>    else:<br>        print(‘出错了’) #报错将不执行, 没触发异常将执行</p><p>###2.2finally</p><pre><code>try:    name #异常    print(&apos;hello !&apos;)except NameError:    print(&apos;报错！&apos;)finally:    print(&apos;你好！&apos;) #无论异常处不触发都执行# finally 无论如何都要执行# 收尾工作，打开了一个文件，占用了一个网络资源，打开了一个和数据库的链接try:    f = open(&apos;content&apos;)    name #即使报错了，也执行finallyfinally:    f.close()    print(&apos;执行了！&apos;)</code></pre><p>###2.3 强制异常<br>    raise NameError(‘name’)<br>    raise NameError</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##1：初始异常&lt;/p&gt;
-&lt;p&gt;###即便是放在try语句中的内容，在遇到报错之后也会中断这段语句的执行&lt;/p&gt;
-&lt;p&gt;####1.1 类型异常&lt;br&gt;    l = [‘登录’, ‘注册’]&lt;br&gt;    try:&lt;br&gt;        num = int(input(‘
       
     
     </summary>
