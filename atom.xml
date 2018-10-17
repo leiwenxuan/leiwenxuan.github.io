@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T15:23:14.995Z</updated>
+  <updated>2018-10-17T11:48:18.758Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery简单入门</title>
+    <link href="http://yoursite.com/2018/10/17/JQuery%E5%88%9D%E8%AF%86/"/>
+    <id>http://yoursite.com/2018/10/17/JQuery初识/</id>
+    <published>2018-10-17T06:56:57.000Z</published>
+    <updated>2018-10-17T11:48:18.758Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="jQuery版本"><a href="#jQuery版本" class="headerlink" title="jQuery版本"></a>jQuery版本</h1><p>1.x：兼容IE678,使用最为广泛的，官方只做BUG维护，功能不再新增。因此一般项目来说，使用1.x版本就可以了，最终版本：1.12.4 (2016年5月20日)</p><p>2.x：不兼容IE678，很少有人使用，官方只做BUG维护，功能不再新增。如果不考虑兼容低版本的浏览器可以使用2.x，最终版本：2.2.4 (2016年5月20日)</p><p>3.x：不兼容IE678，只支持最新的浏览器。需要注意的是很多老的jQuery插件不支持3.x版。目前该版本是官方主要更新维护的版本。<br>维护IE678是一件让人头疼的事情，一般我们都会额外加载一个CSS和JS单独处理。值得庆幸的是使用这些浏览器的人也逐步减少，PC端用户已经逐步被移动端用户所取代，如果没有特殊要求的话，一般都会选择放弃对678的支持。</p><h1 id="jQuery-对象"><a href="#jQuery-对象" class="headerlink" title="jQuery 对象"></a>jQuery 对象</h1><p>jQuery对象就是通过jQuery包装DOM对象后产生的对象。jQuery对象是 jQuery独有的。如果一个对象是 jQuery对象，那么它就可以使用jQuery里的方法：例如$(“#i1”).html()。</p><p>$(“#i1”).html()的意思是：获取id值为 i1的元素的html代码。其中 html()是jQuery里的方法。</p><p>相当于： <strong>document.getElementById(“i1”).innerHTML;</strong></p><p>虽然 jQuery对象是包装 DOM对象后产生的，但是 jQuery对象无法使用 DOM对象的任何方法，同理 DOM对象也没不能使用 jQuery里的方法。</p><p>一个约定，我们在声明一个jQuery对象变量的时候在变量名前面加上$：</p><h1 id="注意事项调用jQuery语法要调用-也就是jQuery-库"><a href="#注意事项调用jQuery语法要调用-也就是jQuery-库" class="headerlink" title="注意事项调用jQuery语法要调用 也就是jQuery 库"></a><strong>注意事项调用jQuery语法要调用 <script src="jquery.js"></script>也就是jQuery 库</strong></h1><h2 id="jQuery-基础语法"><a href="#jQuery-基础语法" class="headerlink" title="jQuery 基础语法"></a>jQuery 基础语法</h2><pre><code>$(selector).action()</code></pre><h1 id="查找标签"><a href="#查找标签" class="headerlink" title="查找标签"></a>查找标签</h1><h2 id="基本原则器"><a href="#基本原则器" class="headerlink" title="基本原则器"></a>基本原则器</h2><h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><pre><code>$(&quot;#id&quot;)</code></pre><h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><pre><code>$(&quot;tagName&quot;)</code></pre><h3 id="class-选择器"><a href="#class-选择器" class="headerlink" title="class 选择器"></a>class 选择器</h3><pre><code>$(&quot;.className&quot;)</code></pre><h3 id="配合使用"><a href="#配合使用" class="headerlink" title="配合使用"></a>配合使用</h3><pre><code>$(&quot;div.c1&quot;) // 找到有c1 class的div 标签</code></pre><h3 id="所有的元素选择器"><a href="#所有的元素选择器" class="headerlink" title="所有的元素选择器"></a>所有的元素选择器</h3><pre><code>$(&quot;*&quot;)</code></pre><h3 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h3><pre><code>$(&quot;#id , .classname, tanName&quot;)</code></pre><h2 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h2><p>x 和 y 可以为任意选择器</p><p>$(“x y”) //x 的所有Y后代<br>$(“X&gt;y”)  //x的所有儿子y<br>$(“x+y”)   // 找到所有紧邻在X后面的Y<br>$(“x~y”)   //x之后所有的兄弟Y<br><img src="https://i.imgur.com/y8cENWG.png" alt=""></p><h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><pre><code>:first // 第一个:last // 最后一个:eq(index)// 索引等于index的那个元素:even // 匹配所有索引值为偶数的元素，从 0 开始计数:odd // 匹配所有索引值为奇数的元素，从 0 开始计数:gt(index)// 匹配所有大于给定索引值的元素:lt(index)// 匹配所有小于给定索引值的元素:not(元素选择器)// 移除所有满足not条件的标签:has(元素选择器)// 选取所有包含一个或多个标签在其内的标签(指的是从后代元素找)</code></pre><p><img src="https://i.imgur.com/JA1qlZC.png" alt=""></p><h3 id="具体事例"><a href="#具体事例" class="headerlink" title="具体事例"></a>具体事例</h3><pre><code>&lt;body&gt;&lt;div&gt;wo shi 1&lt;/div&gt;&lt;div class=&quot;c1&quot;&gt;wo shi c1&lt;/div&gt;&lt;ul id=&quot;u1&quot;&gt;    &lt;l1&gt;1&lt;/l1&gt;    &lt;l1&gt;2&lt;/l1&gt;    &lt;l1&gt;3&lt;/l1&gt;    &lt;l1&gt;4&lt;/l1&gt;    &lt;l1&gt;5&lt;/l1&gt;    &lt;l1&gt;6&lt;/l1&gt;    &lt;l1&gt;7&lt;/l1&gt;    &lt;l1&gt;8&lt;/l1&gt;    &lt;l1&gt;9&lt;/l1&gt;    &lt;l1&gt;10&lt;/l1&gt;&lt;/ul&gt;&lt;/body&gt;</code></pre><p><img src="https://i.imgur.com/UvnnvZ3.png" alt=""></p><h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>[attribute]<br>[attribute=value]// 属性等于<br>[attribute!=value]// 属性不等于</p><p><img src="https://i.imgur.com/UqKKpWM.png" alt=""><br><img src="https://i.imgur.com/6GfbJ2z.png" alt=""></p><h2 id="筛选器方法"><a href="#筛选器方法" class="headerlink" title="筛选器方法"></a>筛选器方法</h2><h3 id="下一个元素"><a href="#下一个元素" class="headerlink" title="下一个元素"></a>下一个元素</h3><pre><code>$(&quot;#id&quot;).next() //下一个$(&quot;#id&quot;).nextAll()  //$(&quot;#id&quot;).nextUntil(&quot;#i2&quot;)</code></pre><h3 id="上一个元素"><a href="#上一个元素" class="headerlink" title="上一个元素"></a>上一个元素</h3><pre><code>$(&quot;#id&quot;).prev()$(&quot;#id&quot;).prevAll()$(&quot;#id&quot;).prevUntil(&quot;#i2&quot;)</code></pre><h3 id="父亲元素"><a href="#父亲元素" class="headerlink" title="父亲元素"></a>父亲元素</h3><pre><code>$(&quot;#id&quot;).parent()$(&quot;#id&quot;).parents()  // 查找当前元素的所有的父辈元素$(&quot;#id&quot;).parentsUntil() // 查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止</code></pre><h3 id="儿子和兄弟元素"><a href="#儿子和兄弟元素" class="headerlink" title="儿子和兄弟元素"></a>儿子和兄弟元素</h3><pre><code>$(&quot;#id&quot;).children();// 儿子们$(&quot;#id&quot;).siblings();// 兄弟们</code></pre><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><pre><code>搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。$(&quot;div&quot;).find(&quot;p&quot;)等价于$(&quot;div p&quot;)</code></pre><h3 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h3><pre><code>筛选出与指定表达式匹配的元素集合。这个方法用于缩小匹配的范围。用逗号分隔多个表达式。$(&quot;div&quot;).filter(&quot;.c1&quot;)  // 从结果集中过滤出有c1样式类的等价于 $(&quot;div.c1&quot;)补充：.first() // 获取匹配的第一个元素.last() // 获取匹配的最后一个元素.not() // 从匹配元素的集合中删除与指定表达式匹配的元素.has() // 保留包含特定后代的元素，去掉那些不含有指定后代的元素。.eq() // 索引值等于指定值的元素</code></pre><h3 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h3><pre><code>addClass();// 添加指定的CSS类名。removeClass();// 移除指定的CSS类名。hasClass();// 判断样式存不存在toggleClass();// 切换CSS类名，如果有就移除，如果没有就添加</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;jQuery版本&quot;&gt;&lt;a href=&quot;#jQuery版本&quot; class=&quot;headerlink&quot; title=&quot;jQuery版本&quot;&gt;&lt;/a&gt;jQuery版本&lt;/h1&gt;&lt;p&gt;1.x：兼容IE678,使用最为广泛的，官方只做BUG维护，功能不再新增。因此一般项目来说，
+      
+    
+    </summary>
+    
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
+    
+    
+      <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
+    
+  </entry>
   
   <entry>
     <title>cssPostion-定位</title>
@@ -70,31 +95,6 @@
   </entry>
   
   <entry>
-    <title>cssPostion-定位</title>
-    <link href="http://yoursite.com/2018/10/15/cssPostion-%E5%AE%9A%E4%BD%8D/"/>
-    <id>http://yoursite.com/2018/10/15/cssPostion-定位/</id>
-    <published>2018-10-15T09:18:02.000Z</published>
-    <updated>2018-10-15T09:18:25.498Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><pre><code>static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等值是不起作用的的。</code></pre><h1 id="relative（相对定位）"><a href="#relative（相对定位）" class="headerlink" title="relative（相对定位）"></a>relative（相对定位）</h1><pre><code>相对定位是相对于该元素在文档流中的原始位置，即以自己原始位置为参照物。有趣的是，即使设定了元素的相对定位以及偏移值，元素还占有着原来的位置，即占据文档流空间。对象遵循正常文档流，但将依据top，right，bottom，left等属性在正常文档流中偏移位置。而其层叠通过z-index属性定义。注意：position：relative的一个主要用法：方便绝对定位元素找到参照物。</code></pre><h1 id="absolute（绝对定位）"><a href="#absolute（绝对定位）" class="headerlink" title="absolute（绝对定位）"></a>absolute（绝对定位）</h1><pre><code>定义：设置为绝对定位的元素框从文档流完全删除，并相对于最近的已定位祖先元素定位，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块（即body元素）。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。重点：如果父级设置了position属性，例如position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。另外，对象脱离正常文档流，使用top，right，bottom，left等属性进行绝对定位。而其层叠通过z-index属性定义。</code></pre><p>fixed（固定）</p><pre><code>fixed：对象脱离正常文档流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性 定义。 注意点： 一个元素若设置了 position:absolute | fixed; 则该元素就不能设置float。这 是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流”。但是 relative 却可以。因为它原本所占的空间仍然占据文档流。在理论上，被设置为fixed的元素会被定位于浏览器窗口的一个指定坐标，不论窗口是否滚动，它都会固定在这个位置。</code></pre><h2 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h2><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;  &lt;meta charset=&quot;UTF-8&quot;&gt;  &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;  &lt;title&gt;返回顶部示例&lt;/title&gt;  &lt;style&gt;    * {      margin: 0;    }    .d1 {      height: 1000px;      background-color: #eeee;    }    .scrollTop {      background-color: darkgrey;      padding: 10px;      text-align: center;      position: fixed;      right: 10px;      bottom: 20px;    }  &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;d1&quot;&gt;111&lt;/div&gt;&lt;div class=&quot;scrollTop&quot;&gt;返回顶部&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><h1 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h1><pre><code>#i2 {  z-index: 999;}设置对象的层叠顺序，数值大的会覆盖在数值小的标签之上。z-index 仅能在定位元素上奏效。 自定义模态框示例</code></pre><h1 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h1><pre><code>用来定义透明效果。取值范围是0~1，0是完全透明，1是完全不透明</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;static&quot;&gt;&lt;a href=&quot;#static&quot; class=&quot;headerlink&quot; title=&quot;static&quot;&gt;&lt;/a&gt;static&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等
-      
-    
-    </summary>
-    
-      <category term="html" scheme="http://yoursite.com/categories/html/"/>
-    
-    
-      <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
-    
-  </entry>
-  
-  <entry>
     <title>面试真题：</title>
     <link href="http://yoursite.com/2018/10/15/%E9%9D%A2%E8%AF%95%E9%A2%98Python/"/>
     <id>http://yoursite.com/2018/10/15/面试题Python/</id>
@@ -116,6 +116,31 @@
     
     
       <category term="Python编程题" scheme="http://yoursite.com/tags/Python%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cssPostion-定位</title>
+    <link href="http://yoursite.com/2018/10/15/cssPostion-%E5%AE%9A%E4%BD%8D/"/>
+    <id>http://yoursite.com/2018/10/15/cssPostion-定位/</id>
+    <published>2018-10-15T09:18:02.000Z</published>
+    <updated>2018-10-15T09:18:25.498Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><pre><code>static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等值是不起作用的的。</code></pre><h1 id="relative（相对定位）"><a href="#relative（相对定位）" class="headerlink" title="relative（相对定位）"></a>relative（相对定位）</h1><pre><code>相对定位是相对于该元素在文档流中的原始位置，即以自己原始位置为参照物。有趣的是，即使设定了元素的相对定位以及偏移值，元素还占有着原来的位置，即占据文档流空间。对象遵循正常文档流，但将依据top，right，bottom，left等属性在正常文档流中偏移位置。而其层叠通过z-index属性定义。注意：position：relative的一个主要用法：方便绝对定位元素找到参照物。</code></pre><h1 id="absolute（绝对定位）"><a href="#absolute（绝对定位）" class="headerlink" title="absolute（绝对定位）"></a>absolute（绝对定位）</h1><pre><code>定义：设置为绝对定位的元素框从文档流完全删除，并相对于最近的已定位祖先元素定位，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块（即body元素）。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。重点：如果父级设置了position属性，例如position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。另外，对象脱离正常文档流，使用top，right，bottom，left等属性进行绝对定位。而其层叠通过z-index属性定义。</code></pre><p>fixed（固定）</p><pre><code>fixed：对象脱离正常文档流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性 定义。 注意点： 一个元素若设置了 position:absolute | fixed; 则该元素就不能设置float。这 是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流”。但是 relative 却可以。因为它原本所占的空间仍然占据文档流。在理论上，被设置为fixed的元素会被定位于浏览器窗口的一个指定坐标，不论窗口是否滚动，它都会固定在这个位置。</code></pre><h2 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h2><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;  &lt;meta charset=&quot;UTF-8&quot;&gt;  &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;  &lt;title&gt;返回顶部示例&lt;/title&gt;  &lt;style&gt;    * {      margin: 0;    }    .d1 {      height: 1000px;      background-color: #eeee;    }    .scrollTop {      background-color: darkgrey;      padding: 10px;      text-align: center;      position: fixed;      right: 10px;      bottom: 20px;    }  &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;d1&quot;&gt;111&lt;/div&gt;&lt;div class=&quot;scrollTop&quot;&gt;返回顶部&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><h1 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h1><pre><code>#i2 {  z-index: 999;}设置对象的层叠顺序，数值大的会覆盖在数值小的标签之上。z-index 仅能在定位元素上奏效。 自定义模态框示例</code></pre><h1 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h1><pre><code>用来定义透明效果。取值范围是0~1，0是完全透明，1是完全不透明</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;static&quot;&gt;&lt;a href=&quot;#static&quot; class=&quot;headerlink&quot; title=&quot;static&quot;&gt;&lt;/a&gt;static&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等
+      
+    
+    </summary>
+    
+      <category term="html" scheme="http://yoursite.com/categories/html/"/>
+    
+    
+      <category term="css-Postion" scheme="http://yoursite.com/tags/css-Postion/"/>
     
   </entry>
   
@@ -492,29 +517,6 @@
       
         &lt;p&gt;##1.1：process模块介绍&lt;/p&gt;
 &lt;p&gt;###具体方法&lt;br&gt;    p.start()：启动进程，并调用该子进程中的p.run()&lt;br&gt;    p.run():进程启动时运行的方法，正是它去调用target指定的函数，我们自定义类的类中一定要实现该方法&lt;br&gt;
-      
-    
-    </summary>
-    
-      <category term="python" scheme="http://yoursite.com/categories/python/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>multiprocess进程-锁-信号量-事件</title>
-    <link href="http://yoursite.com/2018/10/02/multiprocessing%E6%A8%A1%E5%9D%97/"/>
-    <id>http://yoursite.com/2018/10/02/multiprocessing模块/</id>
-    <published>2018-10-02T04:24:38.971Z</published>
-    <updated>2018-10-03T10:32:34.045Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。"><a href="#创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。" class="headerlink" title="创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。"></a>创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。</h2><pre><code>Queue([maxsize]) 创建共享的进程队列。maxsize是队列中允许的最大项数。如果省略此参数，则无大小限制。底层队列使用管道和锁定实现。另外，还需要运行支持线程以便队列中的数据传输到底层管道中。 Queue的实例q具有以下方法：q.get( [ block [ ,timeout ] ] ) 返回q中的一个项目。如果q为空，此方法将阻塞，直到队列中有项目可用为止。block用于控制阻塞行为，默认为True. 如果设置为False，将引发Queue.Empty异常（定义在Queue模块中）。timeout是可选超时时间，用在阻塞模式中。如果在制定的时间间隔内没有项目变为可用，将引发Queue.Empty异常。q.get_nowait( ) 同q.get(False)方法。q.put(item [, block [,timeout ] ] ) 将item放入队列。如果队列已满，此方法将阻塞至有空间可用为止。block控制阻塞行为，默认为True。如果设置为False，将引发Queue.Empty异常（定义在Queue库模块中）。timeout指定在阻塞模式中等待可用空间的时间长短。超时后将引发Queue.Full异常。q.qsize() 返回队列中目前项目的正确数量。此函数的结果并不可靠，因为在返回结果和在稍后程序中使用结果之间，队列中可能添加或删除了项目。在某些系统上，此方法可能引发NotImplementedError异常。q.empty() 如果调用此方法时 q为空，返回True。如果其他进程或线程正在往队列中添加项目，结果不可靠的。也就是说，在返回和使用结果之间，队列中可能已经加入新的项目。q.full() 如果q已满，返回为True. 由于线程的存在，结果也可能是不可靠的（参考q.empty（）方法）。。方法介绍</code></pre><h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><pre><code>from multiprocessing import Process, Queueimport timedef fun(q):    print(&apos;my name is li&apos;)    q.put([&apos;lei&apos;, 1, 2, 3, 4])if __name__ == &apos;__main__&apos;:    q = Queue()    p = Process(target=fun, args=(q,))    p.start()    time.sleep(1)    print(q.get())</code></pre><h2 id="队里问题，-消费者生产模型"><a href="#队里问题，-消费者生产模型" class="headerlink" title="队里问题， 消费者生产模型"></a>队里问题， 消费者生产模型</h2><pre><code>from multiprocessing import Process, Queueimport timedef producer(q, name, food):    for i in range(10):        time.sleep(0.0005)        print(&apos;%s生产了%s%s&apos; % (name, food,i))        q.put(food + str(i))def consume(q, name):    while 1:        food = q.get()        if food is None:break        print(&apos;%s吃了%s&apos;%(name, food))if __name__ == &apos;__main__&apos;:    q = Queue()    p1 = Process(target=producer, args=(q,&apos;li&apos;,&apos;包子&apos;))    p1.start()    p2 = Process(target=consume, args=(q,&apos;alex&apos;))    p2.daemon = True    p2.start()    p1.join() #等p1的原因是先让生产完，防止生产来不及队列里面为空    q.put(None)</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><p>##JoinableQueue 类</p><p>###put</p><p>###get</p><p>###task_done 通知队列已经有一个数据被处理了</p><p>###q.join() # 阻塞直到放入队列中所有的数据都被处理掉(有多少个数据就接收到了多少taskdone)</p><pre><code>import timeimport randomfrom multiprocessing import Process,JoinableQueuedef consumer(q,name):    #处理数据    while 1:        food = q.get()        time.sleep(random.uniform(0, 1))        print(&apos;%s吃了%s&apos;%(name, food))        q.task_done()def producer(q, name, food):    for i in range(10):        time.sleep(random.uniform(0,1))        print(&quot;%s生产了%s%s&quot;%(name, food, i))        q.put(food + str(i))if __name__ == &apos;__main__&apos;:    q = JoinableQueue()    c1 = Process(target=consumer, args=(q, &apos;lei&apos;))    c1.daemon = True #创建了一个守护进程    c1.start()    p1 = Process(target=producer, args=(q, &apos;wuyan&apos;, &apos;煎饼&apos;))    p1.start()    p1.join() #等待生产完毕， 保证了队列里面有全部的数据    q.join() #每次取出数据调用 q.task_done() 当为数据取玩阻塞消失</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><h2 id="pipe的端口管理不会随着某一个进程的关闭就关闭"><a href="#pipe的端口管理不会随着某一个进程的关闭就关闭" class="headerlink" title="pipe的端口管理不会随着某一个进程的关闭就关闭"></a>pipe的端口管理不会随着某一个进程的关闭就关闭</h2><h3 id="操作系统来管理进程对这些端口的使用"><a href="#操作系统来管理进程对这些端口的使用" class="headerlink" title="操作系统来管理进程对这些端口的使用"></a>操作系统来管理进程对这些端口的使用</h3><h3 id="left-right"><a href="#left-right" class="headerlink" title="left,right"></a>left,right</h3><h3 id="left-right-1"><a href="#left-right-1" class="headerlink" title="left,right"></a>left,right</h3><h3 id="操作系统管理4个端口-每关闭一个端口计数-1，直到所有的端口都关闭了，"><a href="#操作系统管理4个端口-每关闭一个端口计数-1，直到所有的端口都关闭了，" class="headerlink" title="操作系统管理4个端口  每关闭一个端口计数-1，直到所有的端口都关闭了，"></a>操作系统管理4个端口  每关闭一个端口计数-1，直到所有的端口都关闭了，</h3><h3 id="剩余1个端口的时候-recv就会报错"><a href="#剩余1个端口的时候-recv就会报错" class="headerlink" title="剩余1个端口的时候 recv就会报错"></a>剩余1个端口的时候 recv就会报错</h3><pre><code>from multiprocessing import Pipe, Processdef pipeline(left, right):    ret = right.recv() #右边接受    print(&apos;%s&apos;%(ret))if __name__ == &apos;__main__&apos;:    left, right = Pipe()    p = Process(target=pipeline, args=(left, right))    left.send(&apos;你好，保重&apos;) #左边发送    p.start()def pipeline(left, right):    left.close()    while 1:        try:            print(right.recv())        except EOFError:            breakif __name__ == &apos;__main__&apos;:    left, right = Pipe()    p = Process(target=pipeline, args=(left, right))    p.start()    right.close()    for i in range(10):        left.send(i)    left.close()</code></pre><p>#<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p><h3 id="为什么要有进程池？"><a href="#为什么要有进程池？" class="headerlink" title="为什么要有进程池？"></a>为什么要有进程池？</h3><pre><code>开启过多的进程并不能提高你的效率，反而会降低效率</code></pre><h3 id="计算密集型-充分占用CPU-多进程可以充分利用多核"><a href="#计算密集型-充分占用CPU-多进程可以充分利用多核" class="headerlink" title="计算密集型  充分占用CPU 多进程可以充分利用多核"></a>计算密集型  充分占用CPU 多进程可以充分利用多核</h3><pre><code>适合开启多进程，但是不适合开启很多多进程</code></pre><h3 id="IO密集型-大部分时间都在阻塞队列，而不是在运行状态中"><a href="#IO密集型-大部分时间都在阻塞队列，而不是在运行状态中" class="headerlink" title="IO密集型    大部分时间都在阻塞队列，而不是在运行状态中"></a>IO密集型    大部分时间都在阻塞队列，而不是在运行状态中</h3><pre><code>根本不太适合开启多进程</code></pre><p><strong>实例化 传参数 进程的个数 cpu/cpu+1<br>提交任务<br>同步提交 apply<br>    返回值 ： 子进程对应函数的返回值<br>    一个一个顺序执行的，并没有任何并发效果<br>异步提交 apply_async<br>    没有返回值，要想所有任务能够顺利的执行完毕<br>        p.close()<br>        p.join() # 必须先close再join，阻塞直到进程池中的所有任务都执行完毕<br>    有返回值的情况下<br>        res.get() # get不能再提交任务之后立刻执行，应该是先提交所有的任务再通过get获取结果<br>    map()方法<br>        异步提交的简化版本<br>        自带close和join方法</strong></p><p> #<strong>*</strong><br>    from multiprocessing import Pool<br>    import time<br>    def fun(i):<br>        print(i)<br>    if <strong>name</strong> == ‘<strong>main</strong>‘:<br>        p = Pool(5)<br>        start = time.clock()<br>        for i in range(10000):</p><pre><code>    # p.apply_async(func=fun, args=(i,)) #异步提交 1.3874192285529539(时间)    p.apply(fun, args=(i,)) #通同步提交2.2022746500453803(时间)p.close() # 关闭进程池，用户不能再向这个池中提交任务了p.join() # 阻塞，直到进程池中所有的任务都被执行完end = time.clock()print(end - start)</code></pre><p>#<strong>*</strong></p><pre><code>from multiprocessing import Poolimport timedef fun(i):    print(i)    return i*2if __name__ == &apos;__main__&apos;:    p = Pool(5)    start = time.clock()    p_lis = []    for i in range(10000):        ret = p.apply_async(func=fun, args=(i,)) #异步提交 1.3874192285529539(时间)        p_lis.append(ret)         # p.apply(fun, args=(i,)) #通同步提交2.2022746500453803(时间)    p.close() # 关闭进程池，用户不能再向这个池中提交任务了    p.join() # 阻塞，直到进程池中所有的任务都被执行完    for ret in p_lis:        print(ret.get()) #取出进程里面的返回值    end = time.clock()    print(end - start)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。&quot;&gt;&lt;a href=&quot;#创建共享的进程队列，Queue是多进程安全的队列，可以使用Queue实现多进程之间的数据传递。&quot; class=&quot;headerlink&quot; title
       
     
     </summary>
